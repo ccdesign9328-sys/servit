@@ -34,19 +34,19 @@ export default function Navbar() {
               Productos
             </Link>
             <Link
-              href="/service"
+              href="/servicios"
               className="text-sm font-medium text-gray-600 hover:text-cyan-600 transition-colors"
             >
               Servicios
             </Link>
             <Link
-              href="/contact"
+              href="/contacto"
               className="text-sm font-medium text-gray-600 hover:text-cyan-600 transition-colors"
             >
               Contáctanos
             </Link>
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/524422645163"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
@@ -97,21 +97,21 @@ export default function Navbar() {
               Productos
             </Link>
             <Link
-              href="/service"
+              href="/servicios"
               className="text-sm font-medium text-gray-700"
               onClick={() => setMenuOpen(false)}
             >
               Servicios
             </Link>
             <Link
-              href="/contact"
+              href="/contacto"
               className="text-sm font-medium text-gray-700"
               onClick={() => setMenuOpen(false)}
             >
               Contáctanos
             </Link>
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/524422645163"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-600 text-white text-sm font-semibold px-5 py-2 rounded-full text-center"
