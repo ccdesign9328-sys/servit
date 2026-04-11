@@ -1,0 +1,504 @@
+/* ====================================================
+   FONTS — cargadas en el CSS, disponibles desde SSR
+   ==================================================== */
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_d_QF5bwkEU4HTy.woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_dNQF5bwkEU4HTy.woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_ehR15bwkEU4HTy.woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR15bwkEU4HTy.woff2");
+}
+
+/* ====================================================
+   HERO
+   ==================================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 175px 30px 120px;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://framerusercontent.com/images/SXBaM8C96I4dqBoeyJfuIQ9wA.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.heroBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 1312px;
+}
+
+.heroTitle {
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.heroTitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroSub {
+  font-size: 16px;
+  color: #f6f7f9;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.65s ease 0.18s, transform 0.65s ease 0.18s;
+}
+
+.heroSub.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .hero {
+    padding: 140px 30px 80px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    padding: 100px 20px 60px;
+  }
+  .heroSub,
+  .heroTitle {
+    text-align: center;
+  }
+}
+
+/* ====================================================
+   CONTACT SECTION
+   ==================================================== */
+.contactSection {
+  background: #f6f7f9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 42px 30px;
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .contactSection {
+    padding: 80px 30px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contactSection {
+    padding: 60px 20px;
+  }
+}
+
+.contactRow {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  gap: 134px;
+  width: 100%;
+  max-width: 1312px;
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .contactRow {
+    flex-direction: column;
+    gap: 55px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contactRow {
+    flex-direction: column;
+    gap: 35px;
+    max-width: 100%;
+  }
+}
+
+/* ====================================================
+   FORM CARD
+   ==================================================== */
+.formCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  flex: 1 0 0;
+  max-width: 601px;
+  width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.formCard.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1199.98px) {
+  .formCard {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+}
+
+.formRow {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .formRow {
+    flex-direction: column;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3b3b3b;
+}
+
+.input,
+.select,
+.textarea {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #3b3b3b;
+  background: #f6f7f9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 1.7em;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(59, 59, 59, 0.7);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #383d61;
+  box-shadow: 0 0 0 3px rgba(56, 61, 97, 0.12);
+}
+
+.input.error,
+.select.error,
+.textarea.error {
+  border-color: #eb1a21;
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%233b3b3b' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-color: #f6f7f9;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.errMsg {
+  color: #eb1a21;
+  font-size: 11.5px;
+  margin-top: -4px;
+  display: none;
+}
+
+.errMsg.show {
+  display: block;
+}
+
+/* Submit button */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #eb1a21;
+  color: #fff;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 20px 12px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background: #c9141a;
+  transform: scale(1.03);
+}
+
+.submitBtnIcon {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ====================================================
+   INFO PANEL
+   ==================================================== */
+.infoPanel {
+  flex: 1 0 0;
+  max-width: 470px;
+  width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+}
+
+.infoPanel.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1199.98px) {
+  .infoPanel {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+    gap: 40px;
+  }
+}
+
+.infoTitleBox {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoTitle {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.infoDesc {
+  font-size: 14px;
+  color: #3b3b3b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.infoContacts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #000;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.infoItem a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.infoItem a:hover {
+  color: #eb1a21;
+}
+
+.infoIcon {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.infoIcon svg {
+  width: 16px;
+  height: 16px;
+  fill: #eb1a21;
+}
+
+/* ====================================================
+   MAP
+   ==================================================== */
+.mapSection {
+  width: 100%;
+  max-width: 1312px;
+}
+
+.mapWrap {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 420px;
+  width: 100%;
+}
+
+.mapWrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 767.98px) {
+  .mapWrap {
+    height: 280px;
+    border-radius: 12px;
+  }
+}
+
+/* ====================================================
+   WA MODAL
+   ==================================================== */
+.overlay {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  font-family: "Figtree", system-ui, sans-serif;
+}
+
+.modalBox {
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 28px 28px;
+  max-width: 360px;
+  width: 92%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.modalBox h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #111;
+}
+
+.modalBox p {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 22px;
+  line-height: 1.55;
+}
+
+.waBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Figtree", system-ui, sans-serif;
+}
+
+.cancelBtn {
+  display: block;
+  margin: 12px auto 0;
+  font-size: 13px;
+  color: #aaa;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
