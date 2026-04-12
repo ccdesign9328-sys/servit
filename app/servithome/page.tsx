@@ -162,7 +162,7 @@ export default function ServitHomePage() {
             <div className={styles.trustImgWrap}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://framerusercontent.com/images/G77nPeJJSO3S743gKmPKVqkzMo.jpg"
+                src="/home/qsimg.jpg"
                 alt="Equipo SERVIT"
                 style={{
                   display: "block",
@@ -245,7 +245,7 @@ export default function ServitHomePage() {
               <div className={styles.aboutImgWrap}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://framerusercontent.com/images/GllpqO90hMRdcGFfsxZQepaAEg.jpg"
+                  src="/home/sicimg.jpg"
                   alt="Mantenimiento SERVIT"
                   style={{
                     display: "block",
@@ -280,7 +280,7 @@ export default function ServitHomePage() {
                   <div className={styles.aboutCardIcon}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://framerusercontent.com/images/R8HdQcgzsMiShql7LtNHvwNj42U.svg"
+                      src="/home/R8HdQcgzsMiShql7LtNHvwNj42U.svg"
                       alt=""
                       width={40}
                       height={40}
@@ -308,7 +308,7 @@ export default function ServitHomePage() {
                   <div className={styles.aboutCardIcon}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://framerusercontent.com/images/3j9HPwlRzIQfAaIPCRacedUS1ro.svg"
+                      src="/home/3j9HPwlRzIQfAaIPCRacedUS1ro.svg"
                       alt=""
                       width={49}
                       height={40}
@@ -335,7 +335,7 @@ export default function ServitHomePage() {
                   <div className={styles.aboutCardIcon}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="https://framerusercontent.com/images/R8HdQcgzsMiShql7LtNHvwNj42U.svg"
+                      src="/home/R8HdQcgzsMiShql7LtNHvwNj42U.svg"
                       alt=""
                       width={40}
                       height={40}
@@ -374,7 +374,7 @@ export default function ServitHomePage() {
               <div className={styles.processCardIcon}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://framerusercontent.com/images/OJge6PxltyJ24LEGkdAyGk6kg.svg"
+                  src="/home/OJge6PxltyJ24LEGkdAyGk6kg.svg"
                   alt=""
                   width={48}
                   height={48}
@@ -398,7 +398,7 @@ export default function ServitHomePage() {
               <div className={styles.processCardIcon}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://framerusercontent.com/images/U61snqzTGf2Rdt5qB2JB3xh1I.svg"
+                  src="/home/U61snqzTGf2Rdt5qB2JB3xh1I.svg"
                   alt=""
                   width={48}
                   height={49}
@@ -420,7 +420,7 @@ export default function ServitHomePage() {
               <div className={styles.processCardIcon}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://framerusercontent.com/images/dYAA9zkYABjRhTSBRJi2JZJpCo.svg"
+                  src="/home/dYAA9zkYABjRhTSBRJi2JZJpCo.svg"
                   alt=""
                   width={48}
                   height={49}
@@ -454,7 +454,7 @@ export default function ServitHomePage() {
               Mobile: order:1, width:100%, height:399px */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://framerusercontent.com/images/gQ2IgeI51Ou4BIGJGCZ3wi4vNc.png"
+            src="/home/mainimg.jpg"
             alt="Soporte posventa SERVIT"
             className={styles.maintenanceImg}
             decoding="async"

@@ -1840,6 +1840,14 @@
   .trustDesc {
     max-width: 100%;
   }
+  .maintenanceTitleGroup {
+    width: 100%;
+    max-width: 100%;
+  }
+  .maintenanceDesc {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 /* ====================================================
