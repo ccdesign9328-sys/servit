@@ -1,0 +1,2157 @@
+/* ====================================================
+   FONTS — disponibles desde SSR (sin FOUC)
+   ==================================================== */
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_d_QF5bwkEU4HTy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_dNQF5bwkEU4HTy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_ehR15bwkEU4HTy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR15bwkEU4HTy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_e8R15bwkEU4HTy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/figtree/v7/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_edR15bwkEU4HTy.woff2") format("woff2");
+}
+
+/* ====================================================
+   CUSTOM PROPERTIES
+   ==================================================== */
+.page {
+  --red: #eb1a21;
+  --red-dark: #c9141a;
+  --black: #0a0a0a;
+  --gray-bg: #f6f7f9;
+  --gray-mid: #e8e9ec;
+  --text: #3b3b3b;
+  --text-light: rgba(59, 59, 59, 0.65);
+  --max-w: 1312px;
+  --section-px: 80px;
+  --section-py: 96px;
+  font-family: "Figtree", system-ui, sans-serif;
+  background: #fff;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ====================================================
+   SCROLL ANIMATIONS
+   CSS Modules se inyectan en <head> antes de JS,
+   garantizando estado inicial correcto (SSR-safe).
+   JS sólo añade la clase .visible cuando el elemento
+   entra al viewport.
+   ==================================================== */
+.revealUp {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.revealLeft {
+  opacity: 0;
+  transform: translateX(-56px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.revealRight {
+  opacity: 0;
+  transform: translateX(56px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+/* HomeAnimations añade "visible" (clase global) cuando entra al viewport */
+:global(.visible).revealUp,
+:global(.visible).revealLeft,
+:global(.visible).revealRight {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays */
+.delay1 { transition-delay: 0.08s; }
+.delay2 { transition-delay: 0.16s; }
+.delay3 { transition-delay: 0.24s; }
+.delay4 { transition-delay: 0.32s; }
+.delay5 { transition-delay: 0.40s; }
+.delay6 { transition-delay: 0.48s; }
+
+/* ====================================================
+   HERO  —  equivalente a .framer-lll9qr + .framer-aeqbbw
+   ==================================================== */
+.hero {
+  position: relative;
+  /* El original de Framer usa padding: 213px 30px 76px para definir la altura,
+     no un height fijo. Replicamos con padding-top generoso. */
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: min-content;
+  padding: 213px 30px 76px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.heroBgWrap {
+  /* equivalente a .framer-sqhsfv: posicionado absolute, con border-radius lateral */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.heroBgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  /* equivalente a .framer-aeqbbw: gradient de transparente→negro desde arriba */
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 91%
+  );
+}
+
+.heroContent {
+  /* equivalente a .framer-1yzlw09 en desktop:
+     flex row, space-between, align-items flex-end, max-width 1312px */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-flow: row;
+  place-content: flex-end space-between;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  gap: 0;
+}
+
+/* Hijo izquierdo de heroContent — equivalente a .framer-1ry0tjn:
+   flex:1 0 0, max-width:541px, gap:72px, padding:0 0 104px, align-items:flex-start */
+.heroTextWrap {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 72px;
+  width: 1px;           /* flex trick para que tome el ancho del flex parent */
+  max-width: 541px;
+  height: min-content;
+  padding: 0 0 104px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.heroTitle {
+  font-size: clamp(32px, 4.5vw, 62px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.heroDesc {
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 460px;
+  /* Border izquierdo igual al original de Framer */
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+  padding-left: 14px;
+}
+
+/* ====================================================
+   SHARED BUTTONS
+   ==================================================== */
+.btnRed {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btnRed:hover { background: var(--red-dark); transform: scale(1.03); }
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btnOutline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+.btnSolid {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background 0.2s, transform 0.15s;
+}
+.btnSolid:hover { background: var(--red-dark); transform: scale(1.02); }
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid rgba(59, 59, 59, 0.3);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btnGhost:hover { border-color: var(--red); color: var(--red); }
+
+.btnWhite {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 10px 10px 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btnWhite:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); }
+
+.btnWhiteIcon {
+  width: 40px;
+  height: 40px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.btnWhiteIcon svg {
+  stroke: #fff;
+  fill: none;
+  width: 16px;
+  height: 16px;
+}
+
+.btnWa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btnWa:hover { background: #1ebe5d; transform: scale(1.02); }
+
+/* ====================================================
+   SECTION TYPOGRAPHY HELPERS
+   ==================================================== */
+.sectionLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 12px;
+}
+
+.sectionTitle {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1.18;
+  margin: 0 0 16px;
+}
+
+.sectionDesc {
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ====================================================
+   SERVICES SECTION  —  equivalente a .framer-atbboe
+   Desktop: fondo #fff, padding:72px 30px, flex column centrado
+   El anchor #todosproductos está en el background div (.servicesBg)
+   ==================================================== */
+.servicesSection {
+  /* framer-atbboe: background:#fff, flex column center, padding:72px 30px */
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  height: min-content;
+  padding: 72px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo decorativo gris — framer-1cfqdja (position:absolute, inset:0, bg:#f6f7f9) */
+.servicesBg {
+  background-color: var(--gray-bg);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Contenedor centrado — framer-or2int: flex column, gap:64px, max-width:1312px */
+.servicesInner {
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header wrapper — framer-1u6t77s: flex row center, max-width:532px */
+.servicesHeader {
+  display: flex;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 532px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Título de sección h2 — framer-styles-preset-1i6aecd
+   font-size:56px, weight:600, letter-spacing:-2px, line-height:120% */
+.servicesSectionTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  color: var(--black);
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+/* Card wrapper — framer-16h4iqj: flex column center, gap:24px */
+.servicesCardWrapper {
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid de cards — framer-bc2930: grid 2 col, gap:24px, aspect-ratio:1.26386 */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+/* ── CARD (framer-MIfd4 framer-v-2vs96y — Desktop) ──────────────
+   Layout HORIZONTAL: imagen izquierda flex:1, contenido derecho flex:1
+   width:644px height:360px gap:32px padding:20px border-radius:16px
+   ─────────────────────────────────────────────────────────────── */
+.serviceCard {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  height: 360px;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.10);
+  /* Entrada por scroll: estado inicial */
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Estado visible tras animación de scroll */
+:global(.visible).serviceCard {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hover: ligera elevación (Framer usa will-change:transform) */
+.serviceCard:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13);
+}
+
+/* Imagen izquierda — framer-17jkgpc: flex:1 0 0, width:1px, height:100% */
+.serviceCardImg {
+  flex: 1 0 0;
+  width: 1px;
+  height: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.serviceCardImg img {
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+.serviceCard:hover .serviceCardImg img {
+  transform: scale(1.04);
+}
+
+/* Contenido derecho — framer-1jimn4a: flex column, flex:1 0 0, gap:23px, padding:40px 0 */
+.serviceCardBody {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 23px;
+  width: 1px;
+  height: min-content;
+  padding: 40px 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Área texto — framer-19hjo1w: flex column, gap:64px */
+.serviceCardContent {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 64px;
+  width: 100%;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Título h4 — framer-styles-preset-3ubip:
+   Figtree, ~20px, weight:600, color:#000 */
+.serviceCardTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.25;
+  margin: 0;
+  width: 100%;
+}
+
+/* Descripción wrapper — framer-6o2ggy + framer-19k0ozf */
+.serviceCardDescWrap {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+}
+
+/* Descripción p — opacity:0.8 */
+.serviceCardDesc {
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+  width: 100%;
+}
+
+/* Botón "Ver más" — framer-bg7jd9:
+   flex row center, gap:24px, padding:6px 8px 6px 16px, border-radius:52px, border:1px solid rgba(0,0,0,0.4) */
+.serviceCardBtn {
+  display: inline-flex;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: min-content;
+  height: min-content;
+  padding: 6px 8px 6px 16px;
+  border-radius: 52px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--black);
+  white-space: nowrap;
+  transition: border-color 0.2s, background 0.2s;
+}
+.serviceCardBtn:hover {
+  border-color: var(--red);
+  background: rgba(235, 26, 33, 0.04);
+}
+
+/* Texto del botón — framer-nb5g8o */
+.serviceCardBtnText {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black);
+  white-space: pre;
+}
+
+/* Ícono circular rojo — framer-jt0lh9: padding:8px, border-radius:45px, bg:var(--red) */
+.serviceCardBtnIcon {
+  display: flex;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  gap: 10px;
+  width: min-content;
+  height: min-content;
+  padding: 8px;
+  border-radius: 45px;
+  background-color: var(--red);
+  flex-shrink: 0;
+}
+.serviceCardBtnIcon svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* La flecha en Framer está rotada -45deg */
+  transform: rotate(-45deg);
+}
+
+/* ====================================================
+   TRUST / ABOUT BAR — equivalente a .framer-qj5ku9
+   Layout: sección gris con imagen izquierda + card blanca derecha
+   Desktop: ROW — imagen flex:1 | card blanca max-width:644px padding:50px 40px
+   ==================================================== */
+.trustSection {
+  /* framer-qj5ku9: bg:#f6f7f9, flex column center, padding:48px 30px */
+  background-color: var(--gray-bg);
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: min-content;
+  padding: 48px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor — framer-jb9mf7: flex ROW center, gap:24px, max-width:1312px */
+.trustInner {
+  display: flex;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Wrapper imagen + card — framer-1byak3l: flex ROW flex:1, gap:24px */
+.trustRow {
+  display: flex;
+  flex-flow: row;
+  flex: 1 0 0;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 1px;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen — framer-1397e8p: border-radius:16px, flex:1 0 0, align-self:stretch */
+.trustImgWrap {
+  border-radius: 16px;
+  flex: 1 0 0;
+  align-self: stretch;
+  width: 1px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  /* animación entrada: desktop translateX(-50px) */
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).trustImgWrap {
+  opacity: 1;
+  transform: none;
+}
+.trustImgWrap img {
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Card blanca — framer-dmws6r: bg:#fff, border-radius:24px, flex:1 0 0,
+   max-width:644px, padding:50px 40px, gap:10px */
+.trustCard {
+  background-color: #fff;
+  border-radius: 24px;
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 1px;
+  max-width: 644px;
+  height: min-content;
+  padding: 50px 40px;
+  position: relative;
+  overflow: hidden;
+  /* animación entrada: desktop translateX(50px) */
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).trustCard {
+  opacity: 1;
+  transform: none;
+}
+
+/* Contenido card — framer-6qdbkw: flex column, gap:94px */
+.trustCardContent {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 94px;
+  width: 100%;
+  height: min-content;
+}
+
+/* Bloque título — framer-1chy2ly: flex column, gap:8px, max-width:503px */
+.trustCardTitle {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 503px;
+  height: min-content;
+}
+
+/* Label rojo pequeño — preset-176vqfs: 14px, weight:700, uppercase */
+.trustLabel {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0;
+}
+
+/* H2 título — preset-1i6aecd: 56px, weight:600, letter-spacing:-2px */
+.trustH2 {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+  max-width: 501px;
+}
+
+/* Bloque párrafo — framer-2wvz0f: flex column, gap:40px */
+.trustCardBody {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  height: min-content;
+}
+
+/* Párrafo — framer-zs89l9: opacity:0.8, preset-aeocj2: 16px, weight:400, lh:170% */
+.trustDesc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.8;
+  margin: 0;
+  width: 100%;
+  max-width: 491px;
+}
+
+/* ====================================================
+   ABOUT / MANTENIMIENTO SECTION — equivalente a .framer-h6o080
+   Desktop: fondo #fff, padding:86px 30px, flex column, gap:2px
+   Contenido: título izq (flex:1, max-width:530px) + cards derecha (flex:1, max-width:562px)
+   ==================================================== */
+.aboutSection {
+  /* framer-h6o080: bg:#fff, flex column center, padding:86px 30px, gap:2px, overflow:visible */
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  height: min-content;
+  padding: 86px 30px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Contenedor — framer-69u8nh: flex column flex-end, gap:100px, max-width:1312px */
+.aboutInner {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-end center;
+  align-items: flex-end;
+  gap: 100px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fila superior — framer-18vekv6: flex ROW space-between align-end */
+.aboutTopRow {
+  display: flex;
+  flex-flow: row;
+  place-content: flex-end space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Columna izquierda: título + imagen — framer-11h6qgn: flex:1, max-width:530px, gap:48px */
+.aboutLeft {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 48px;
+  width: 1px;
+  max-width: 530px;
+  height: min-content;
+  /* animación entrada: translateY(50px) */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).aboutLeft {
+  opacity: 1;
+  transform: none;
+}
+
+/* Grupo de título — framer-3enix4: flex column, gap:24px, max-width:429px */
+.aboutTitleGroup {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 429px;
+  height: min-content;
+  overflow: visible;
+}
+
+/* Label rojo pequeño */
+.aboutLabel {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0;
+}
+
+/* H2 título — preset-1i6aecd: 56px, weight:600, letter-spacing:-2px */
+.aboutH2 {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+}
+
+/* Descripción — framer-jakcd1: opacity:0.8, max-width:409px */
+.aboutDesc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.8;
+  margin: 0;
+  width: 100%;
+  max-width: 409px;
+}
+
+/* Imagen izquierda — framer-89wp66: aspect-ratio:1.50765, border-radius:16px, width:100% */
+.aboutImgWrap {
+  aspect-ratio: 1.50765;
+  border-radius: 16px;
+  flex: none;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.aboutImgWrap img { object-fit: cover; }
+
+/* Columna derecha — framer-t4rvp5:
+   flex column, flex:1 0 0, width:1px, max-width:562px, gap:24px, align-items:center
+   Desktop: cards apiladas verticalmente (full width)
+   Tablet: flex ROW (3 cards igual ancho, height:348px)
+   Mobile: flex column, gap:16px */
+.aboutRight {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  width: 1px;
+  max-width: 562px;
+  height: min-content;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card de mantenimiento — framer-jajn4.framer-1ak6r3i:
+   bg:#f6f7f9, border-radius:20px, flex column space-between
+   flex:none, width:100%, height:auto, padding:46px 22px 44px 41px */
+.aboutCard {
+  background-color: var(--gray-bg);
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+  flex: none;
+  width: 100%;
+  height: min-content;
+  padding: 46px 22px 44px 41px;
+  position: relative;
+  overflow: visible;
+  /* animación entrada: translateY(50px) */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).aboutCard {
+  opacity: 1;
+  transform: none;
+}
+
+/* Contenido de la card — framer-pl5jfb: flex column, gap:24px */
+.aboutCardInner {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 614px;
+  height: min-content;
+}
+
+/* Ícono SVG — framer-1bzvlde: aspect-ratio:1, width:40px, height:40px */
+.aboutCardIcon {
+  aspect-ratio: 1;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  position: relative;
+  flex-shrink: 0;
+}
+.aboutCardIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Bloque texto — framer-1gdxp15: flex column, gap:16px, center */
+.aboutCardText {
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: min-content;
+}
+
+/* H4 card — preset-3ubip: 22px, weight:600, lh:140% */
+.aboutCardTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+}
+
+/* Descripción card — preset-aeocj2: 16px, weight:400, lh:170%, opacity:0.8 */
+.aboutCardDesc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.8;
+  margin: 0;
+  width: 100%;
+}
+
+/* Contenedor CTA row bajo el grid */
+.aboutCtaRow {
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: min-content;
+}
+
+/* ── conservar .aboutCtaWrap para compatibilidad con trust-qj5ku9 ── */
+.aboutCtaWrap {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ====================================================
+   PROCESS CARDS — equivalente a .framer-1vj8isy
+   Sibling de aboutTopRow dentro de aboutInner (framer-69u8nh)
+   Desktop: grid 3 col, gap:24px
+   Tablet: grid 2 col, gap:20px
+   Mobile: grid 1 col, gap:16px
+   ==================================================== */
+
+/* Grid wrapper — framer-1vj8isy:
+   flex:none, grid 3 col, gap:24px, width:100% */
+.processCards {
+  flex: none;
+  display: grid;
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Process card container — framer-1ffu6jp-container:
+   flex:none, place-self:start, width:100%, height:100%
+   Animación: translateY(50px) */
+.processCard {
+  flex: none;
+  place-self: start;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  /* animación entrada */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).processCard {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card inner — framer-6gI2E.framer-yi8lql:
+   flex column, gap:24px, no background */
+.processCardInner {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ícono — framer-fysdn5:
+   aspect-ratio:1, width:48px, height:48px, border-radius:16px */
+.processCardIcon {
+  aspect-ratio: 1;
+  height: 48px;
+  flex: none;
+  width: 48px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Texto wrapper — framer-31soi6:
+   flex column, gap:15px, max-width:429px */
+.processCardText {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 15px;
+  width: 100%;
+  max-width: 429px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* H4 — preset-3ubip: 22px, weight:600, letter-spacing:-0.5px, lh:140% */
+.processCardTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+}
+
+/* ====================================================
+   MAINTENANCE / SOPORTE POSVENTA — equivalente a .framer-1upn7bu
+   Desktop: bg:#f6f7f9, padding:114px 30px, flex column center
+   Layout ROW: contenido LEFT (flex:1, max-w:500px) | imagen RIGHT (flex:1, max-w:600px)
+   ==================================================== */
+
+/* Sección — framer-1upn7bu:
+   bg:#f6f7f9, flex column center, gap:20px, padding:114px 30px */
+.maintenanceSection {
+  background-color: var(--gray-bg);
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: min-content;
+  padding: 114px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor ROW — framer-1tz26an:
+   flex row, space-between, align-items:flex-start, max-width:1312px */
+.maintenanceInner {
+  display: flex;
+  flex-flow: row;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen derecha — framer-1026ja9:
+   aspect-ratio:0.878477, height:683px, border-radius:16px
+   flex:1 0 0, width:1px, max-width:600px
+   Animación entrada: translateX(50px) */
+.maintenanceImg {
+  aspect-ratio: 0.878477;
+  height: var(--framer-aspect-ratio-supported, 683px);
+  border-radius: 16px;
+  flex: 1 0 0;
+  width: 1px;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+  /* animación entrada */
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).maintenanceImg {
+  opacity: 1;
+  transform: none;
+}
+.maintenanceImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+}
+
+/* Contenido izquierda — framer-biau4g:
+   flex column, flex:1 0 0, width:1px, max-width:500px, gap:56px
+   Animación entrada: translateX(-50px) */
+.maintenanceBiau {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 56px;
+  width: 1px;
+  max-width: 500px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  /* animación entrada */
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+:global(.visible).maintenanceBiau {
+  opacity: 1;
+  transform: none;
+}
+
+/* Grupo título — framer-y42l3d:
+   flex column, flex:none, gap:20px, max-width:541px */
+.maintenanceTitleGroup {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 541px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* H2 — preset-1i6aecd: 56px, weight:600, letter-spacing:-2px, lh:1.2 */
+.maintenanceH2 {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+}
+
+/* Descripción — framer-1w0kfjc: opacity:0.8, preset-aeocj2, max-width:511px */
+.maintenanceDesc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.8;
+  margin: 0;
+  width: 100%;
+  max-width: 511px;
+}
+
+/* Card wrapper — framer-18cn9vu:
+   flex wrap, place-content:center flex-start, gap:28px */
+.maintenanceCardWrap {
+  display: flex;
+  flex-flow: wrap;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Feature card container — framer-qmngh3/8y92h8/1bmetdj-container:
+   flex:none, width:42%, height:auto */
+.maintenanceFeatureItem {
+  flex: none;
+  width: 42%;
+  height: auto;
+  position: relative;
+}
+
+/* Feature card inner — framer-aqJke.framer-1ootv0z:
+   flex column, gap:16px (icon + text block) */
+.maintenanceFeatureCard {
+  display: flex;
+  flex-flow: column;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Ícono SVG masked — framer-kUWHQ / framer-bX7Uu / framer-dlkev:
+   width:32px, aspect-ratio depende del icono, CSS mask para colorear */
+/* Ícono SVG — framer-45vfa9: width:32px, height:33px (aspect-ratio:.969697)
+   Inline SVGs, coloreados directamente con fill="rgb(255,99,51)" */
+.maintenanceFeatureIcon {
+  width: 32px;
+  height: 33px;
+  flex: none;
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Bloque de texto — framer-1eak17v:
+   flex column, gap:12px */
+.maintenanceFeatureText {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* H4 — preset-3ubip: 22px, weight:600, letter-spacing:-0.5px, lh:140% */
+.maintenanceFeatureTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+  color: var(--black);
+  margin: 0;
+  width: 100%;
+}
+
+/* Párrafo — preset-aeocj2: 16px, weight:400, lh:170%, color:#3b3b3b */
+.maintenanceFeatureDesc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+  width: 100%;
+}
+
+/* ====================================================
+   FEATURES SECTION
+   ==================================================== */
+.featuresSection {
+  background: #fff;
+  padding: var(--section-py) var(--section-px);
+}
+
+.featuresInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.featuresHeader {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.featureCard {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--gray-bg);
+  border-radius: 16px;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(235, 26, 33, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.featureIcon svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--red);
+}
+
+.featureTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.featureDesc {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ====================================================
+   BRANDS SECTION
+   ==================================================== */
+.brandsSection {
+  background: var(--gray-bg);
+  padding: 48px var(--section-px);
+}
+
+.brandsInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.brandsLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.brandsRow {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.brandLogo {
+  height: 40px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  filter: grayscale(1);
+}
+.brandLogo:hover { opacity: 1; filter: none; }
+
+/* ====================================================
+   CTA BANNER
+   ==================================================== */
+.ctaBanner {
+  background: var(--black);
+  padding: var(--section-py) var(--section-px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaDeco1 {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235, 26, 33, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ctaDeco2 {
+  position: absolute;
+  bottom: -80px;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235, 26, 33, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ctaBannerInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaBannerContent {
+  flex: 1;
+  max-width: 600px;
+}
+
+.ctaBannerTitle {
+  font-size: clamp(26px, 3.5vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.ctaBannerDesc {
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ctaBannerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* ====================================================
+   RESPONSIVE — TABLET (768px–1199px)
+   ==================================================== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .page {
+    --section-px: 40px;
+    --section-py: 72px;
+  }
+
+  /* Hero tablet — framer-lll9qr tablet: padding:140px 30px 76px */
+  .hero {
+    padding: 140px 30px 76px;
+  }
+
+  .heroBgWrap {
+    border-radius: 18px;
+  }
+
+  .heroOverlay {
+    border-radius: 18px;
+  }
+
+  /* heroContent tablet — framer-1yzlw09 tablet: column, center, gap:30px */
+  .heroContent {
+    flex-direction: column;
+    justify-content: center;
+    place-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 100%;
+  }
+
+  /* heroTextWrap tablet: ocupa todo el ancho */
+  .heroTextWrap {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    padding: 0;
+  }
+
+  /* Services tablet — framer-atbboe tablet: padding:80px 30px
+     framer-or2int tablet: gap:45px, max-width:100%, padding:0 20px
+     framer-bc2930 tablet: sin grid → flex column (1 columna)
+     framer-card tablet (v-o07k0y): height:min-content (no fijo)
+  */
+  .servicesSection {
+    padding: 80px 30px;
+  }
+
+  .servicesInner {
+    gap: 45px;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .servicesGrid {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    height: min-content;
+    gap: 24px;
+  }
+
+  /* Card tablet (framer-v-o07k0y): layout mantiene ROW pero height:min-content */
+  .serviceCard {
+    height: min-content;
+  }
+
+  /* Imagen: align-self stretch (ocupa altura del contenido) */
+  .serviceCardImg {
+    align-self: stretch;
+    height: auto;
+    min-height: 220px;
+  }
+
+  .servicesSectionTitle {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  /* ── trustSection tablet — framer-qj5ku9 tablet: padding:80px 30px
+     framer-jb9mf7 tablet: flex-direction:column, max-width:100%
+     framer-1byak3l tablet: flex-direction:column, flex:none, width:100%
+     framer-1397e8p tablet: aspect-ratio:1.34345, height:527px, flex:none, width:100%
+     framer-dmws6r tablet: max-width:unset, flex:none, width:100%
+     framer-6qdbkw tablet: gap:35px, max-width:100%
+  ── */
+  .trustSection {
+    padding: 80px 30px;
+  }
+  .trustInner {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .trustRow {
+    flex-direction: column;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  .trustImgWrap {
+    align-self: unset;
+    aspect-ratio: 1.34345;
+    height: 527px;
+    flex: none;
+    width: 100%;
+    transform: translateY(50px); /* tablet usa translateY en vez de X */
+  }
+  .trustCard {
+    max-width: unset;
+    flex: none;
+    width: 100%;
+    transform: translateY(50px);
+  }
+  .trustCardContent {
+    gap: 35px;
+    max-width: 100%;
+  }
+  .trustH2 {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  /* ── aboutSection tablet — framer-h6o080 tablet: padding:80px 30px
+     framer-69u8nh tablet: align-items:center, gap:60px, max-width:100%
+     framer-18vekv6 tablet: flex-direction:column, gap:60px
+     framer-11h6qgn tablet: max-width:unset, flex:none, gap:40px, width:100%
+     framer-3enix4 tablet: gap:20px, max-width:80%
+     framer-89wp66 tablet: height:470px (aspect-ratio cambia)
+     framer-t4rvp5 tablet: flex-direction:row, flex:none, width:100%, max-width:unset
+     framer-1vj8isy tablet: grid 2 col, gap:20px
+  ── */
+  .aboutSection {
+    padding: 80px 30px;
+  }
+  .aboutInner {
+    align-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 100%;
+  }
+  .aboutTopRow {
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+  }
+  .aboutLeft {
+    max-width: unset;
+    flex: none;
+    gap: 40px;
+    width: 100%;
+  }
+  .aboutTitleGroup {
+    gap: 20px;
+    max-width: 80%;
+  }
+  .aboutH2 {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+  .aboutImgWrap {
+    aspect-ratio: unset;
+    height: 470px;
+  }
+  /* ── aboutRight tablet — framer-t4rvp5 tablet:
+     flex-direction:row, flex:none, width:100%, max-width:unset
+     Cards: flex:1 0 0, width:1px, height:348px, min-height:244px ── */
+  .aboutRight {
+    flex-direction: row;
+    flex: none;
+    width: 100%;
+    max-width: unset;
+  }
+  .aboutCard {
+    flex: 1 0 0;
+    width: 1px;
+    height: 348px;
+    min-height: 244px;
+    padding: 24px 16px;
+  }
+
+  /* ── processCards tablet — framer-1vj8isy tablet:
+     grid 2 col, gap:20px
+     framer-1ffu6jp-container: height:auto ── */
+  .processCards {
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    gap: 20px;
+  }
+  .processCard {
+    height: auto;
+  }
+
+  /* ── maintenanceSection tablet — framer-1upn7bu tablet: padding:80px 30px
+     framer-1tz26an tablet: flex-direction:column, gap:60px, max-width:100%
+     framer-1026ja9 tablet: aspect-ratio:1.08923, height:650px, flex:none, order:1, width:100%
+     framer-biau4g tablet: flex:none, order:0, width:100%
+     framer-qmngh3-container: order:0, width:48%
+     framer-8y92h8-container: order:1, width:48%
+     framer-1bmetdj-container: order:2, width:48%, height:145px
+  ── */
+  .maintenanceSection {
+    padding: 80px 30px;
+  }
+  .maintenanceInner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+    max-width: 100%;
+  }
+  .maintenanceImg {
+    aspect-ratio: 1.08923;
+    height: var(--framer-aspect-ratio-supported, 650px);
+    max-width: unset;
+    flex: none;
+    order: 1;
+    width: 100%;
+    transform: translateY(50px); /* tablet usa Y */
+  }
+  .maintenanceBiau {
+    max-width: unset;
+    flex: none;
+    order: 0;
+    width: 100%;
+  }
+  .maintenanceFeatureItem:nth-child(1) { order: 0; width: 48%; }
+  .maintenanceFeatureItem:nth-child(2) { order: 1; width: 48%; }
+  .maintenanceFeatureItem:nth-child(3) { order: 2; width: 48%; height: 145px; }
+
+  /* Features: 2 columns */
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CTA Banner: stack */
+  .ctaBannerInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .ctaBannerActions {
+    flex-direction: row;
+  }
+}
+
+/* ====================================================
+   RESPONSIVE — MOBILE (< 768px)
+   ==================================================== */
+@media (max-width: 767.98px) {
+  .page {
+    --section-px: 20px;
+    --section-py: 56px;
+  }
+
+  /* Hero mobile — framer-lll9qr mobile: padding:130px 20px 147px
+     framer-sqhsfv mobile: border-radius:unset, left:0, width:100%
+     framer-aeqbbw mobile: border-radius:unset, gradient distinto */
+  .hero {
+    padding: 130px 20px 147px;
+  }
+
+  .heroBgWrap {
+    border-radius: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .heroOverlay {
+    border-radius: 0;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.10) 0%,
+      rgba(0, 0, 0, 0.61) 64%
+    );
+  }
+
+  /* heroContent mobile — framer-1yzlw09 mobile: column, center, gap:30px */
+  .heroContent {
+    flex-direction: column;
+    justify-content: center;
+    place-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 100%;
+    padding: 0;
+    margin-left: 0;
+  }
+
+  /* heroTextWrap mobile: ocupa todo el ancho */
+  .heroTextWrap {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 0;
+  }
+
+  .heroDesc {
+    max-width: 100%;
+  }
+
+  /* Services mobile — framer-atbboe mobile: padding:60px 20px
+     framer-or2int mobile: gap:35px, max-width:100%, padding:0 10px
+     framer-bc2930 mobile: flex column, gap:16px
+     framer-card mobile (v-mkc10v): VERTICAL — flex-direction:column,
+       width:350px→100%, height:min-content, gap:28px, centrado
+  */
+  .servicesSection {
+    padding: 60px 20px;
+  }
+
+  .servicesInner {
+    gap: 35px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .servicesGrid {
+    flex-flow: column;
+    gap: 16px;
+  }
+
+  /* Card mobile: vertical (framer-v-mkc10v):
+     flex-direction:column, gap:28px, width:100%, height:min-content */
+  .serviceCard {
+    flex-direction: column;
+    gap: 28px;
+    height: min-content;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* Imagen mobile: aspect-ratio 1.18182 (≈6:5), flex:none, width:100% */
+  .serviceCardImg {
+    aspect-ratio: 1.18182;
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    border-radius: 0;
+    align-self: unset;
+  }
+
+  /* Contenido mobile: centrado, padding:0 0 20px */
+  .serviceCardBody {
+    flex: none;
+    align-content: center;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+    padding: 0 20px 20px;
+  }
+
+  .serviceCardContent {
+    align-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .serviceCardTitle {
+    text-align: center;
+  }
+
+  .serviceCardDescWrap {
+    align-content: center;
+    align-items: center;
+  }
+
+  .serviceCardDesc {
+    text-align: center;
+  }
+
+  .servicesSectionTitle {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  /* Trust: 2 × 2 grid */
+  /* ── trustSection mobile — framer-qj5ku9 mobile: padding:0 20px 60px
+     framer-jb9mf7 mobile: flex-direction:column, max-width:100%
+     framer-1byak3l mobile: flex-direction:column, flex:none, width:100%
+     framer-1397e8p mobile: aspect-ratio:1.16667, height:300px, flex:none, width:100%
+     framer-dmws6r mobile: max-width:unset, flex:none, width:100%, padding:20px
+     framer-6qdbkw mobile: gap:30px
+  ── */
+  .trustSection {
+    padding: 0 20px 60px;
+  }
+  .trustInner {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .trustRow {
+    flex-direction: column;
+    flex: none;
+    width: 100%;
+  }
+  .trustImgWrap {
+    aspect-ratio: 1.16667;
+    height: 300px;
+    flex: none;
+    width: 100%;
+    align-self: unset;
+  }
+  .trustCard {
+    max-width: unset;
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+  .trustCardContent {
+    gap: 30px;
+  }
+  .trustH2 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+  .trustDesc {
+    max-width: unset;
+  }
+
+  /* ── aboutSection mobile — framer-h6o080 mobile: padding:60px 20px
+     framer-69u8nh mobile: gap:40px, max-width:100%
+     framer-18vekv6 mobile: flex-direction:column, gap:40px
+     framer-11h6qgn mobile: height:539px, max-width:unset, flex:none, gap:40px, width:100%
+     framer-3enix4 mobile: max-width:unset, gap:18px
+     framer-89wp66 mobile: aspect-ratio:unset, flex:1 0 0, height:1px
+     framer-t4rvp5 mobile: flex:none, gap:16px, width:100%, max-width:unset
+     framer-1vj8isy mobile: grid 1 col, gap:16px
+  ── */
+  .aboutSection {
+    padding: 60px 20px;
+  }
+  .aboutInner {
+    gap: 40px;
+    max-width: 100%;
+  }
+  .aboutTopRow {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+  }
+  .aboutLeft {
+    height: 539px;
+    max-width: unset;
+    flex: none;
+    gap: 40px;
+    width: 100%;
+  }
+  .aboutTitleGroup {
+    max-width: unset;
+    gap: 18px;
+  }
+  .aboutDesc {
+    max-width: unset;
+  }
+  .aboutH2 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+  .aboutImgWrap {
+    aspect-ratio: unset;
+    flex: 1 0 0;
+    height: 1px;
+  }
+  /* ── aboutRight mobile — framer-t4rvp5 mobile:
+     flex:none, flex-direction:column, gap:16px, width:100% ── */
+  .aboutRight {
+    flex: none;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: unset;
+  }
+  .aboutCard {
+    flex: none;
+    width: 100%;
+    height: min-content;
+    min-height: unset;
+    padding: 40px 22px;
+  }
+
+  /* ── processCards mobile — framer-1vj8isy mobile:
+     grid 1 col, gap:16px, height:auto ── */
+  .processCards {
+    grid-template-rows: repeat(1, min-content);
+    grid-template-columns: repeat(1, minmax(50px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 16px;
+  }
+  .processCard {
+    height: auto;
+  }
+  .processCardTitle {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── maintenanceSection mobile — framer-1upn7bu mobile: padding:60px 20px
+     framer-1tz26an mobile: flex-direction:column, gap:40px, max-width:100%
+     framer-1026ja9 mobile: height:399px, flex:none, order:1, width:100%
+     framer-biau4g mobile: flex:none, order:0, gap:35px, width:100%
+     framer-18cn9vu mobile: flex-direction:column, align-content:flex-start, gap:30px
+     card containers mobile: width:100%
+  ── */
+  .maintenanceSection {
+    padding: 60px 20px;
+  }
+  .maintenanceInner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    max-width: 100%;
+  }
+  .maintenanceImg {
+    height: var(--framer-aspect-ratio-supported, 399px);
+    max-width: unset;
+    flex: none;
+    order: 1;
+    width: 100%;
+    aspect-ratio: unset;
+  }
+  .maintenanceBiau {
+    max-width: unset;
+    flex: none;
+    order: 0;
+    gap: 35px;
+    width: 100%;
+  }
+  .maintenanceCardWrap {
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  .maintenanceFeatureItem,
+  .maintenanceFeatureItem:nth-child(1),
+  .maintenanceFeatureItem:nth-child(2),
+  .maintenanceFeatureItem:nth-child(3) {
+    width: 100%;
+    height: auto;
+  }
+  .maintenanceH2 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  /* Features */
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuresHeader {
+    text-align: left;
+  }
+
+  /* Brands */
+  .brandsRow {
+    gap: 24px;
+  }
+  .brandLogo {
+    height: 32px;
+    max-width: 80px;
+  }
+
+  /* CTA Banner */
+  .ctaBannerInner {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .ctaBannerActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ctaBannerActions a {
+    width: 100%;
+    justify-content: center;
+  }
+  .btnWhite {
+    justify-content: space-between;
+  }
+}
