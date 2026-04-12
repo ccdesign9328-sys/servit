@@ -1201,11 +1201,11 @@
    Animación entrada: translateX(50px) */
 .maintenanceImg {
   aspect-ratio: 0.878477;
-  height: var(--framer-aspect-ratio-supported, 683px);
+  height: 683px;
   border-radius: 16px;
   flex: 1 0 0;
   width: 1px;
-  max-width: 600px;
+  max-width: 650px;
   position: relative;
   overflow: hidden;
   /* animación entrada */
@@ -1804,7 +1804,7 @@
   }
   .maintenanceImg {
     aspect-ratio: 1.08923;
-    height: var(--framer-aspect-ratio-supported, 650px);
+    height: 100%;
     max-width: unset;
     flex: none;
     order: 1;
@@ -2159,7 +2159,7 @@
     max-width: 100%;
   }
   .maintenanceImg {
-    height: var(--framer-aspect-ratio-supported, 398px);
+    height: 370px;
     max-width: unset;
     flex: none;
     order: 1;
