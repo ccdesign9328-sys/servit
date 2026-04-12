@@ -176,10 +176,15 @@ export default function CamarasDeSeguridad() {
           {/* Botones — siblings de framer-lpb0ca dentro de framer-65xmzm */}
           <div className={`${styles.contentBtns} ${styles.revealUp}`}>
             <Link href="/servicios" className={styles.btnOutline}>
-              Regresar
+              REGRESAR
             </Link>
-            <Link href="/servitcontacto" className={styles.btnPrimary}>
-              Cotizar ahora
+            <Link
+              href="https://wa.me/524422269192?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20C%C3%A1maras%20de%20seguridad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnPrimary}
+            >
+              COTIZAR AHORA
               <span className={styles.btnArrowCircle}>
                 <svg
                   viewBox="0 0 24 24"

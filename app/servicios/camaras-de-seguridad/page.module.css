@@ -154,22 +154,22 @@
   position: relative;
 }
 
-/* H1 — framer-styles-preset-695xs4, Figtree 700 */
+/* H1 — framer-styles-preset-695xs4, Figtree 600, 64px, -3px */
 .heroTitle {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 64px;
   font-weight: 600;
-  letter-spacing: -1px;
+  letter-spacing: -3px;
   line-height: 110%;
   color: #fff;
   margin: 0;
   text-align: left;
 }
 
-/* Paragraph desc — framer-zif8b (opacity 0.8, max-width 520px) */
+/* Paragraph desc — framer-zif8b / preset-aeocj2: Figtree 400, 16px, 170% */
 .heroDesc {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 170%;
   color: #f6f7f9;
@@ -393,19 +393,21 @@
 }
 
 /* Typography inside rich text */
+/* h3 → preset-cu6oqy: Figtree 600, 40px, -0.8px, 140% */
 .contentRichText h3 {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  line-height: 130%;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  line-height: 140%;
   color: #000;
   margin: 0 0 12px;
 }
 
+/* p → preset-aeocj2: Figtree 400, 16px, 0em, 170% */
 .contentRichText p {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 170%;
   color: #3b3b3b;
@@ -417,9 +419,10 @@
   padding-left: 24px;
 }
 
+/* li → preset-aeocj2: Figtree 400, 16px, 170% */
 .contentRichText li {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 170%;
   color: #3b3b3b;
@@ -431,9 +434,8 @@
   margin-top: 8px;
 }
 
-/* Content section buttons — stacked column (framer-65xmzm is column, gap:60px)
-   Each button is a direct flex child — no extra wrapper needed.
-   We add a small utility class to group them with a smaller gap. */
+/* Content section buttons — siblings de framer-lpb0ca dentro de framer-65xmzm
+   gap entre botones: 16px (cada botón es un flex child del contenedor) */
 .contentBtns {
   display: flex;
   flex-flow: column;
@@ -529,12 +531,12 @@
   overflow: hidden;
 }
 
-/* Title text — framer-13964e8 */
+/* Title text — framer-13964e8 / preset-1i6aecd: Figtree 600, 56px, -2px, 120% */
 .relatedTitle {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -2px;
   line-height: 120%;
   color: #000;
   margin: 0;
@@ -647,9 +649,10 @@
   padding: 0;
 }
 
+/* preset-3ubip: Figtree 600, 22px, -0.5px, 140% */
 .relatedCardTitle {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.5px;
   line-height: 140%;
@@ -658,10 +661,11 @@
   text-align: left;
 }
 
+/* preset-1glrmgk: Figtree 500, 16px, 0em, 170% */
 .relatedCardDesc {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 170%;
   color: #3b3b3b;
   opacity: 0.8;
@@ -688,10 +692,11 @@
   white-space: nowrap;
 }
 
+/* preset-176vqfs: Figtree 700, 14px, 0em, 150% */
 .relatedCardBtnLabel {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 150%;
   color: #3b3b3b;
   white-space: pre;
@@ -780,8 +785,10 @@
     max-width: 100%;
   }
 
+  /* preset-695xs4 tablet: 64px (igual que desktop), -2px letter-spacing */
   .heroTitle {
-    font-size: 44px;
+    font-size: 64px;
+    letter-spacing: -2px;
     text-align: center;
   }
 
@@ -812,6 +819,18 @@
     height: 469px;
   }
 
+  /* h3 tablet: escala proporcional desde 40px desktop */
+  .contentRichText h3 {
+    font-size: 32px;
+    letter-spacing: -0.6px;
+  }
+
+  /* relatedTitle tablet: preset-1i6aecd, escala proporcional */
+  .relatedTitle {
+    font-size: 44px;
+    letter-spacing: -1.5px;
+  }
+
   /* Related section */
   .relatedSection {
     padding: 80px 30px 0;
@@ -832,10 +851,6 @@
     max-width: 100%;
   }
   
-  .contentBtns {
-    gap: 40px;
-  }
-
   /* Grid → column (framer-944f9s tablet: flex column, gap mantiene 24px) */
   .relatedGrid {
     display: flex;
@@ -850,7 +865,7 @@
     flex-direction: row;
     height: min-content;
     width: 100%;
-    max-width: 644px;
+    max-width: 100%;
     gap: 32px;
     padding: 20px;
     overflow: hidden;
@@ -876,6 +891,11 @@
 
   .relatedCardTitle {
     font-size: 22px;
+  }
+
+  .contentBtns {
+    justify-content: center;
+    gap: 40px;
   }
 }
 
@@ -907,8 +927,10 @@
     width: 100%;
   }
 
+  /* preset-695xs4 mobile: 40px, -1.5px letter-spacing */
   .heroTitle {
-    font-size: 36px;
+    font-size: 40px;
+    letter-spacing: -1.5px;
     text-align: center;
   }
 
@@ -942,8 +964,10 @@
     height: 232px;
   }
 
+  /* h3 mobile: escala proporcional desde 40px desktop */
   .contentRichText h3 {
-    font-size: 22px;
+    font-size: 26px;
+    letter-spacing: -0.5px;
   }
 
   .contentRichText p,
@@ -954,6 +978,12 @@
   .contentBtns {
     justify-content: center;
     gap: 30px;
+  }
+
+  /* relatedTitle mobile: preset-1i6aecd mantiene 56px (sin override en Framer) */
+  .relatedTitle {
+    font-size: 36px;
+    letter-spacing: -1px;
   }
 
   /* Related section */
@@ -1014,7 +1044,11 @@
     max-width: 100%;
     height: min-content;
     overflow: hidden;
-    padding: 0;
+    padding: 20px;
+  }
+
+  .relatedCardBody {
+    align-items: center;
   }
 
   .relatedCardImage {
@@ -1023,7 +1057,7 @@
     height: auto;
     flex: none;
     width: 100%;
-    border-radius: 0;
+    border-radius: 16px;
   }
 
   .relatedCardContent {
