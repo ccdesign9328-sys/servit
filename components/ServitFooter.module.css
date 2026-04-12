@@ -1,0 +1,265 @@
+/* ====================================================
+   SERVIT FOOTER
+   ==================================================== */
+
+/* Outer wrapper — gray-bg page background */
+.footerWrap {
+  background: #f6f7f9;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Black rounded card */
+.footer {
+  width: 100%;
+  max-width: 1312px;
+  background: #000;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+  padding: 64px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Two-column content row */
+.content {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  gap: 148px;
+  width: 100%;
+  position: relative;
+  padding-bottom: 64px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Vertical divider at 50% */
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Left column */
+.left {
+  flex: 1 0 0;
+  width: 1px;
+  max-width: 784px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.logoLink {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logoItem {
+  position: relative;
+  width: 80px;
+  height: 44px;
+}
+
+.leftBody {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 356px;
+}
+
+.title {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 14px;
+  color: rgba(246, 247, 249, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Brand logos grid */
+.brands {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brandRow {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+/* Right column */
+.right {
+  flex: 1 0 0;
+  width: 1px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-right: 50px;
+}
+
+.ctaTitle {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.ctaDesc {
+  font-size: 14px;
+  color: rgba(246, 247, 249, 0.7);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* White pill button */
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 10px 10px 10px 24px;
+  border-radius: 50px;
+  white-space: nowrap;
+  align-self: flex-start;
+  transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.ctaBtn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+.ctaBtnIcon {
+  width: 40px;
+  height: 40px;
+  background: #eb1a21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transform: rotate(-45deg);
+}
+
+/* Copyright */
+.copyright {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.copyright.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====================================================
+   RESPONSIVE
+   ==================================================== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .footerWrap {
+    padding: 40px;
+  }
+
+  .footer {
+    gap: 56px;
+    padding: 48px 40px;
+    border-radius: 16px;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 48px;
+    padding-bottom: 40px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+
+  .right {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .footerWrap {
+    padding: 40px 20px;
+  }
+
+  .footer {
+    gap: 40px;
+    padding: 36px 24px;
+    border-radius: 16px;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 48px;
+    padding-bottom: 40px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+
+  .right {
+    padding-right: 0;
+  }
+}
