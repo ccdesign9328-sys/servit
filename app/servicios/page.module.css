@@ -554,8 +554,9 @@
   }
 
   .heroDesc {
-    max-width: unset;
+    max-width: 470px;
     text-align: center;
+    font-size: 16px;
   }
 
   /* Service section */
@@ -573,49 +574,50 @@
     gap: 30px;
   }
 
-  /* Grid → flex column */
+  /* Grid → flex column (framer-ebd6wv tablet) */
   .serviceGrid {
     display: flex;
     flex-flow: column;
     align-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 24px;
   }
 
-  /* Card: tablet — column, height min-content */
+  /* Card: tablet (framer-v-o07k0y) — mantiene row, height min-content */
   .serviceCard {
-    flex-direction: column;
-    gap: 0;
-    width: 100%;
-    max-width: 644px;
+    flex-direction: row;
     height: min-content;
+    width: 100%;
+    max-width: 100%;
+    gap: 32px;
+    padding: 20px;
     overflow: hidden;
   }
 
-  /* Card image: full width, aspect ratio */
+  /* Card image: tablet (framer-v-o07k0y .framer-17jkgpc) — align-self stretch, height auto */
   .cardImage {
-    align-self: unset;
-    flex: none;
-    width: 100%;
+    align-self: stretch;
+    flex: 1 0 0;
+    width: 1px;
     height: auto;
-    aspect-ratio: 1.18182;
-    border-radius: 0;
+    aspect-ratio: unset;
+    border-radius: 12px;
   }
 
-  /* Content wrap: full width, centered, padding bottom */
+  /* Content wrap: tablet — igual a desktop */
   .cardContentWrap {
-    flex: none;
+    flex: 1 0 0;
     align-content: flex-start;
     align-items: flex-start;
-    gap: 22px;
-    width: 100%;
-    padding: 24px 24px 20px;
+    gap: 23px;
+    width: 1px;
+    padding: 40px 0;
   }
 
   .cardContent {
     align-content: flex-start;
     align-items: flex-start;
-    gap: 16px;
+    gap: 64px;
   }
 
   .cardTitle {
@@ -624,20 +626,14 @@
   }
 
   .cardButtonGroup {
-    max-width: 100%;
+    max-width: 228px;
     align-content: flex-start;
     align-items: flex-start;
-  }
-
-  .cardButtonNumber {
-    min-width: unset;
-    width: 100%;
   }
 
   .cardButtonTextWrap {
     align-content: flex-start;
     align-items: flex-start;
-    gap: 16px;
   }
 
   .cardDesc {
@@ -689,7 +685,7 @@
     gap: 16px;
   }
 
-  /* Grid → flex column */
+  /* Grid → flex column (framer-ebd6wv mobile) */
   .serviceGrid {
     display: flex;
     flex-flow: column;
@@ -698,53 +694,55 @@
     gap: 16px;
   }
 
-  /* Card: mobile — column, full width */
+  /* Card: mobile (framer-v-mkc10v) — column, gap 28px, full width, sin padding propio */
   .serviceCard {
     flex-direction: column;
-    gap: 0;
+    gap: 28px;
     width: 100%;
     max-width: 100%;
     height: min-content;
     overflow: hidden;
-    padding: 0;
+    padding: 20px;
   }
 
-  /* Card image: aspect-ratio, full width */
+  /* Card image: mobile — aspect-ratio 1.18182, full width, sin border-radius */
   .cardImage {
     align-self: unset;
     aspect-ratio: 1.18182;
     height: auto;
     flex: none;
     width: 100%;
-    border-radius: 0;
+    border-radius: 16px;
   }
 
-  /* Content wrap */
+  /* Content wrap: mobile (framer-v-mkc10v .framer-1jimn4a) — centrado, padding 0 0 20px */
   .cardContentWrap {
     flex: none;
-    align-content: flex-start;
-    align-items: flex-start;
-    gap: 16px;
+    align-content: center;
+    align-items: center;
+    gap: 22px;
     width: 100%;
-    padding: 20px 20px 20px;
+    padding: 0 20px 20px;
   }
 
+  /* Content: mobile (framer-v-mkc10v .framer-19hjo1w) — centrado, gap 16px */
   .cardContent {
-    align-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
+    align-content: center;
+    align-items: center;
+    gap: 16px;
     width: 100%;
   }
 
   .cardTitle {
     font-size: 20px;
-    text-align: left;
+    text-align: center;
   }
 
+  /* Button group: mobile — sin max-width, centrado */
   .cardButtonGroup {
-    max-width: 100%;
-    align-content: flex-start;
-    align-items: flex-start;
+    max-width: unset;
+    align-content: center;
+    align-items: center;
     width: 100%;
   }
 
@@ -753,15 +751,16 @@
     width: 100%;
   }
 
+  /* Button text wrap: mobile — centrado */
   .cardButtonTextWrap {
-    align-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
+    align-content: center;
+    align-items: center;
+    gap: 24px;
     width: 100%;
   }
 
   .cardDesc {
-    text-align: left;
+    text-align: center;
     font-size: 15px;
   }
 }

@@ -24,21 +24,20 @@ const SERVICE_ORDER = [
    Corresponden a las tarjetas del desktop en framer-ebd6wv */
 const SERVICE_IMAGES: Record<string, string> = {
   "camaras-de-seguridad":
-    "https://framerusercontent.com/images/AISD2niQ0IqFHZKL5p7A91zlNB8.png",
+    "/products/camaras-de-seguridad.png",
   "video-portero-inteligente":
-    "https://framerusercontent.com/images/EiRyWyTmUmZTqZM5RaqdU3t70.png",
+    "/products/video-portero-inteligente.png",
   "control-acceso":
-    "https://framerusercontent.com/images/S0cua7mtiVkhYfAns98CTnUxt0.png",
+    "/products/control-acceso.png",
   alarmas:
-    "https://framerusercontent.com/images/Xq8Gss83zAyXuqAyxTwsbbty8.png",
+    "/products/alarmas.png",
   "cerca-electrica":
-    "https://framerusercontent.com/images/4LcHgT064Fcke4pBjeko0JQTw.png",
+    "/products/cerca-electrica.png",
   "aire-acondicionado":
-    "https://framerusercontent.com/images/BX8UlmmGr4o8g0MMR0yguL97Bw.png",
+    "/products/aire-acondicionado.png",
 };
 
 export default function ServiciosPage() {
-  /* Construir lista ordenada de servicios */
   const orderedServices = SERVICE_ORDER.map((slug) =>
     services.find((s) => s.slug === slug)
   ).filter(Boolean) as typeof services;
@@ -189,15 +188,15 @@ export default function ServiciosPage() {
         className={styles.waButton}
         aria-label="Contactar por WhatsApp"
       >
-        <span className={styles.waButtonText}>Cotiza ahora</span>
+        <span className={styles.waButtonText}>COTIZA AHORA</span>
         <span className={styles.waButtonIcon}>
           <svg
             viewBox="0 0 16 16.075"
             overflow="visible"
             aria-hidden="true"
           >
-            <path
-              d="M 13.669 2.334 C 12.177 0.837 10.149 -0.003 8.035 0 C 3.635 0 0.067 3.567 0.067 7.968 C 0.067 9.433 0.462 10.804 1.151 11.984 L 1.13 11.946 L 0 16.075 L 4.223 14.967 C 5.323 15.577 6.634 15.936 8.03 15.936 L 8.033 15.936 C 12.434 15.935 16 12.367 16 7.967 C 16.003 5.854 15.164 3.827 13.669 2.334 Z M 8.033 14.59 L 8.03 14.59 C 6.787 14.59 5.624 14.247 4.631 13.651 L 4.661 13.667 L 2.019 14.363 L 2.728 11.784 L 2.696 11.752 C 1.942 10.714 1.497 9.395 1.497 7.968 C 1.497 4.352 4.418 1.43 8.036 1.43 C 9.786 1.43 11.431 2.113 12.659 3.344 C 13.886 4.575 14.571 6.22 14.57 7.967 C 14.569 11.586 11.648 14.59 8.033 14.59 Z"
+           <path
+              d="M 13.669 2.334 C 12.177 0.837 10.149 -0.003 8.035 0 C 3.635 0 0.067 3.567 0.067 7.968 C 0.067 9.433 0.462 10.804 1.151 11.984 L 1.13 11.946 L 0 16.075 L 4.223 14.967 C 5.323 15.577 6.634 15.936 8.03 15.936 L 8.033 15.936 C 12.434 15.935 16 12.367 16 7.967 C 16.003 5.854 15.164 3.827 13.669 2.334 Z M 8.033 14.59 C 6.787 14.59 5.624 14.247 4.631 13.651 L 4.419 13.524 L 1.913 14.182 L 2.582 11.738 L 2.424 11.488 C 1.759 10.435 1.408 9.214 1.411 7.969 C 1.411 4.312 4.376 1.347 8.033 1.347 C 11.69 1.347 14.655 4.312 14.655 7.969 C 14.655 11.625 11.69 14.59 8.033 14.59 Z M 11.666 9.631 C 11.467 9.532 10.488 9.051 10.306 8.984 C 10.123 8.917 9.99 8.885 9.857 9.084 C 9.725 9.283 9.344 9.731 9.227 9.864 C 9.111 9.998 8.995 10.014 8.796 9.914 C 8.207 9.679 7.663 9.343 7.189 8.922 C 6.767 8.531 6.399 8.076 6.103 7.575 C 5.972 7.348 6.075 7.241 6.175 7.142 C 6.264 7.053 6.374 6.909 6.473 6.793 C 6.551 6.697 6.618 6.587 6.669 6.469 C 6.727 6.348 6.72 6.216 6.655 6.11 C 6.606 6.012 6.208 5.032 6.042 4.633 C 5.88 4.245 5.716 4.298 5.594 4.292 C 5.478 4.287 5.345 4.286 5.212 4.286 C 5.001 4.291 4.812 4.386 4.683 4.534 C 4.222 5.038 3.945 5.68 3.945 6.382 C 3.945 7.084 4.222 7.726 4.683 8.23 C 5.566 9.281 6.72 10.098 8.022 10.586 C 9.325 11.073 10.466 11.153 11.327 10.966 C 11.853 10.848 12.309 10.479 12.593 9.98 C 12.777 9.648 12.826 9.261 12.731 8.895 C 12.636 8.529 12.218 8.333 11.666 9.631 Z"
               fill="rgb(0, 130, 36)"
             />
           </svg>
