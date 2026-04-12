@@ -416,10 +416,12 @@
 
 .contentRichText ul {
   margin: 0 0 12px;
-  padding-left: 24px;
+  padding-inline-start: 24px;
+  list-style: none;
 }
 
 /* li → preset-aeocj2: Figtree 400, 16px, 170% */
+/* ul.framer-text > li.framer-text: position:relative para anclar el ::before */
 .contentRichText li {
   font-family: "Figtree", system-ui, sans-serif;
   font-size: 16px;
@@ -427,6 +429,14 @@
   line-height: 170%;
   color: #3b3b3b;
   margin-bottom: 6px;
+  position: relative;
+}
+
+/* ul.framer-text > li.framer-text::before — bullet personalizado de Framer */
+.contentRichText li::before {
+  content: "•";
+  position: absolute;
+  inset-inline-start: -1em;
 }
 
 .contentRichText h3 + p,
@@ -1077,5 +1087,5 @@
 
   .relatedCardDesc {
     text-align: center;
-  }
+   }
 }
