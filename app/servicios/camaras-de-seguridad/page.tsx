@@ -63,31 +63,6 @@ export default function CamarasDeSeguridad() {
               </p>
             </div>
 
-            {/* CTA buttons */}
-            <div className={styles.heroBtns}>
-              <Link href="/servicios" className={styles.btnOutline}>
-                Regresar
-              </Link>
-              <Link href="/servitcontacto" className={styles.btnPrimary}>
-                Cotizar ahora
-                <span className={styles.btnArrowCircle}>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="rgb(235,26,33)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    width="14"
-                    height="14"
-                    aria-hidden="true"
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
           </div>
         </div>
       </section>

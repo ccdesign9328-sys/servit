@@ -28,9 +28,8 @@ export default function CamarasDeSeguridad({
         padding: 0,
       }}
     >
-      <ServitNavbar activePath="/servicios" />
-      <main>{children}</main>
-      <ServitFooter />
+
+      {children}
     </div>
   );
 }
