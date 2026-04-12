@@ -1580,33 +1580,55 @@
     padding: 140px 30px 76px;
   }
 
+  /* framer-sqhsfv tablet: border-radius:18px */
   .heroBgWrap {
     border-radius: 18px;
+    left: 0;
+    right: 0;
   }
 
+  /* framer-aeqbbw tablet: border-radius:18px, gradient vertical */
   .heroOverlay {
     border-radius: 18px;
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 91%);
   }
 
-  /* heroContent tablet — framer-1yzlw09 tablet: column, center, gap:30px */
+  /* heroContent tablet — framer-1yzlw09 tablet:
+     flex-direction:column, justify-content:center, gap:30px, max-width:100% */
   .heroContent {
     flex-direction: column;
     justify-content: center;
     place-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     max-width: 100%;
   }
 
-  /* heroTextWrap tablet: ocupa todo el ancho */
+  /* heroTextWrap tablet — framer-1ry0tjn tablet:
+     max-width:unset, flex:none, gap:45px, width:100%, padding:0 0 50px
+     align-items permanece flex-start (igual que desktop) */
   .heroTextWrap {
     flex: none;
     width: 100%;
-    max-width: 100%;
-    align-items: center;
-    text-align: center;
-    gap: 40px;
-    padding: 0;
+    max-width: unset;
+    align-items: flex-start;
+    gap: 45px;
+    padding: 0 0 50px;
+  }
+
+  /* heroTitle tablet: 64px, letter-spacing:-2px (preset-695xs4 @max-width:1199px) */
+  .heroTitle {
+    font-size: 64px;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    text-align: left;
+    max-width: 650px;
+  }
+
+  /* heroDesc tablet: padding-left:24px (framer-19eq0r0 tablet: sin override → hereda base) */
+  .heroDesc {
+    text-align: left;
+    max-width: 460px;
   }
 
   /* Services tablet — framer-atbboe tablet: padding:80px 30px
@@ -1825,52 +1847,79 @@
   }
 
   /* Hero mobile — framer-lll9qr mobile: padding:130px 20px 147px
-     framer-sqhsfv mobile: border-radius:unset, left:0, width:100%
-     framer-aeqbbw mobile: border-radius:unset, gradient distinto */
+     framer-sqhsfv mobile: border-radius:unset, left:0, right:unset, width:100%
+     framer-aeqbbw mobile: border-radius:unset, gradient 270deg horizontal */
   .hero {
     padding: 130px 20px 147px;
   }
 
+  /* framer-sqhsfv mobile: all border-radii unset, left:0, right:unset, width:100% */
   .heroBgWrap {
-    border-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     left: 0;
-    right: 0;
+    right: unset;
     width: 100%;
   }
 
+  /* framer-aeqbbw mobile: gradient HORIZONTAL 270deg (izq→der, semitransparente)
+     NO es el degradado vertical del desktop/tablet */
   .heroOverlay {
-    border-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    will-change: unset;
     background: linear-gradient(
-      rgba(0, 0, 0, 0.10) 0%,
-      rgba(0, 0, 0, 0.61) 64%
+      270deg,
+      rgba(0, 0, 0, 0.48) 0%,
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
-  /* heroContent mobile — framer-1yzlw09 mobile: column, center, gap:30px */
+  /* heroContent mobile — framer-1yzlw09 mobile:
+     flex-direction:column, justify-content:center, gap:30px, max-width:100%
+     align-items NO se cambia → hereda flex-start del base */
   .heroContent {
     flex-direction: column;
     justify-content: center;
-    place-content: center;
-    align-items: center;
+    place-content: flex-start center;
+    align-items: flex-start;
     gap: 30px;
     max-width: 100%;
     padding: 0;
-    margin-left: 0;
   }
 
-  /* heroTextWrap mobile: ocupa todo el ancho */
+  /* heroTextWrap mobile — framer-1ry0tjn mobile:
+     max-width:unset, flex:none, order:0, gap:35px, width:100%, padding:0
+     align-items:flex-start (NO centra — el original no lo cambia) */
   .heroTextWrap {
     flex: none;
+    order: 0;
     width: 100%;
-    max-width: 100%;
-    align-items: center;
-    text-align: center;
-    gap: 30px;
+    max-width: unset;
+    align-items: flex-start;
+    gap: 35px;
     padding: 0;
   }
 
+  /* heroTitle mobile — preset-695xs4 @max-width:767px:
+     font-size:40px, letter-spacing:-1.5px, line-height:110%, text-align:start */
+  .heroTitle {
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    text-align: left;
+  }
+
+  /* heroDesc mobile — framer-19eq0r0 mobile: padding:0 0 0 16px (reduce 24→16)
+     framer-7yamh8 mobile: max-width:unset */
   .heroDesc {
     max-width: 100%;
+    padding-left: 16px;
+    text-align: left;
   }
 
   /* Services mobile — framer-atbboe mobile: padding:60px 20px
@@ -2180,6 +2229,7 @@
   color: rgb(0, 28, 8);
   line-height: 1.2;
 }
+
 
 /* Circulo blanco con icono WA */
 .waButtonIcon {
