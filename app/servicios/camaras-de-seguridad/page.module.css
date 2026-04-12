@@ -664,10 +664,10 @@
 /* preset-1glrmgk: Figtree 500, 16px, 0em, 170% */
 .relatedCardDesc {
   font-family: "Figtree", system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 170%;
-  color: #3b3b3b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text);
   opacity: 0.8;
   margin: 0;
   white-space: pre-wrap;
@@ -794,6 +794,7 @@
 
   .heroDesc {
     max-width: unset;
+    max-width: 520px;
   }
 
   /* Content section */
@@ -877,6 +878,7 @@
     flex: 1 0 0;
     width: 1px;
     height: auto;
+    min-height: 220px;
     aspect-ratio: unset;
     border-radius: 12px;
   }
@@ -1011,7 +1013,6 @@
     place-content: center;
     align-items: center;
     gap: 24px;
-    padding: 0 40px 60px;
   }
 
   .relatedTitle {
@@ -1039,7 +1040,7 @@
 
   .relatedCard {
     flex-direction: column;
-    gap: 0;
+    gap: 28px;
     width: 100%;
     max-width: 100%;
     height: min-content;
@@ -1049,12 +1050,14 @@
 
   .relatedCardBody {
     align-items: center;
+    padding: 0 20px 20px;
   }
 
   .relatedCardImage {
     align-self: unset;
     aspect-ratio: 1.18182;
     height: auto;
+    min-height: unset;
     flex: none;
     width: 100%;
     border-radius: 16px;
@@ -1065,14 +1068,14 @@
     align-items: center;
     gap: 16px;
     width: 100%;
-    padding: 20px;
+    padding: 0;
   }
 
   .relatedCardTitle {
-    font-size: 20px;
+    text-align: center;
   }
 
   .relatedCardDesc {
-    font-size: 15px;
+    text-align: center;
   }
 }

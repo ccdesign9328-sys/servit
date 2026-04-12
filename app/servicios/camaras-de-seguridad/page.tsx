@@ -17,7 +17,7 @@ const RELATED_SERVICES = [
     description:
       "Ve y habla con quien toca la puerta. Atiende desde tu celular, control de acceso para hogares y negocios.",
     image:
-      "https://framerusercontent.com/images/EiRyWyTmUmZTqZM5RaqdU3t70.png",
+      "/products/video-portero-inteligente.png",
     href: "/servicios/video-portero-inteligente",
   },
   {
@@ -26,10 +26,14 @@ const RELATED_SERVICES = [
     description:
       "Instalamos sistemas de acceso con huella, tarjeta, teclado o app. Ideal para fraccionamientos, oficinas o industrias.",
     image:
-      "https://framerusercontent.com/images/S0cua7mtiVkhYfAns98CTnUxt0.png",
+      "/products/control-acceso.png",
     href: "/servicios/control-acceso",
   },
 ];
+
+const title="Cámaras de seguridad";
+const titleDescription = "Solución integral para tu hogar o negocio. El reto: proteger tus espacios frente a riesgos reales. En hogares, comercios y pequeñas empresas, la inseguridad y la falta de visibilidad sobre lo que ocurre en cada rincón son problemas frecuentes";
+const mainImg = "/products/camaras-de-seguridad.png"
 
 export default function CamarasDeSeguridad() {
   return (
@@ -50,16 +54,13 @@ export default function CamarasDeSeguridad() {
               {/* framer-oow6wd — título */}
               <div className={styles.heroTitleRow}>
                 <div className={styles.heroTitleWrap}>
-                  <h1 className={styles.heroTitle}>Cámaras de seguridad</h1>
+                  <h1 className={styles.heroTitle}>{title}</h1>
                 </div>
               </div>
 
               {/* framer-zif8b — descripción */}
               <p className={styles.heroDesc}>
-                Solución integral para tu hogar o negocio. El reto: proteger tus
-                espacios frente a riesgos reales. En hogares, comercios y pequeñas
-                empresas, la inseguridad y la falta de visibilidad sobre lo que
-                ocurre en cada rincón son problemas frecuentes.
+               {titleDescription}
               </p>
             </div>
 
@@ -86,7 +87,7 @@ export default function CamarasDeSeguridad() {
             {/* Imagen principal — framer-3ptml (revealUp) */}
             <div className={`${styles.contentImage} ${styles.revealUp}`}>
               <Image
-                src="https://framerusercontent.com/images/AISD2niQ0IqFHZKL5p7A91zlNB8.png"
+                src={mainImg}
                 alt="Cámaras de seguridad"
                 fill
                 className={styles.contentImg}
