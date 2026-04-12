@@ -40,7 +40,7 @@ export default function ServitNavbar({ activePath = "" }: ServitNavbarProps) {
   }, [menuOpen]);
 
   const navLinks = [
-    { href: "/", label: "Productos" },
+    { href: "/", label: "Inio" },
     { href: "/servicios", label: "Servicios" },
     { href: "/servitcontacto", label: "Ubicacion" }
   ];

@@ -95,7 +95,7 @@ export default function ServitHomePage() {
                     {/* Imagen — framer-17jkgpc */}
                     <div className={styles.serviceCardImg}>
                       <Image
-                        src={svc.image}
+                        src={`/products/${svc.slug}.png`}
                         alt={svc.title}
                         fill
                         sizes="(max-width:767px) 100vw, (max-width:1199px) 50vw, (min-width:1200px) calc((min(100vw - 60px, 1312px) - 24px) / 2)"

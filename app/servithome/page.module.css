@@ -494,6 +494,7 @@
 /* Hover: ligera elevación (Framer usa will-change:transform) */
 .serviceCard:hover {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13);
+  border-color: rgb(235, 26, 33) !important;
 }
 
 /* Imagen izquierda — framer-17jkgpc: flex:1 0 0, width:1px, height:100% */
@@ -1680,7 +1681,7 @@
      framer-6qdbkw tablet: gap:35px, max-width:100%
   ── */
   .trustSection {
-    padding: 80px 30px;
+    padding: 0px 30px 80PX;
   }
   .trustInner {
     flex-direction: column;
@@ -1835,6 +1836,10 @@
   .ctaBannerActions {
     flex-direction: row;
   }
+
+  .trustDesc {
+    max-width: 100%;
+  }
 }
 
 /* ====================================================
@@ -1920,6 +1925,7 @@
     max-width: 100%;
     padding-left: 16px;
     text-align: left;
+    font-size: 18px;
   }
 
   /* Services mobile — framer-atbboe mobile: padding:60px 20px
@@ -1945,7 +1951,7 @@
     flex-flow: column;
     align-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
   }
 
   /* Card mobile: vertical (framer-v-mkc10v):
@@ -1954,10 +1960,11 @@
     flex-direction: column;
     gap: 28px;
     height: min-content;
-    padding: 0;
+    padding: 20px;
     border: none;
     border-radius: 16px;
     overflow: hidden;
+    border: 2px solid rgba(0, 0, 0, 0.10);
   }
 
   /* Imagen mobile: aspect-ratio 1.18182 (≈6:5), flex:none, width:100% */
