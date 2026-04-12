@@ -1889,8 +1889,13 @@
     padding: 0 10px;
   }
 
+  /* framer-bc2930 mobile: display:flex sobreescribe el grid base,
+     flex-flow:column, align-content/items:center, gap:16px */
   .servicesGrid {
+    display: flex;
     flex-flow: column;
+    align-content: center;
+    align-items: center;
     gap: 16px;
   }
 
@@ -2072,7 +2077,7 @@
     letter-spacing: -0.5px;
   }
 
-  /* ── maintenanceSection mobile — framer-1upn7bu mobile: padding:60px 20px
+   /* ── maintenanceSection mobile — framer-1upn7bu mobile: padding:60px 20px
      framer-1tz26an mobile: flex-direction:column, gap:40px, max-width:100%
      framer-1026ja9 mobile: height:399px, flex:none, order:1, width:100%
      framer-biau4g mobile: flex:none, order:0, gap:35px, width:100%

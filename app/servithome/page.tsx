@@ -29,15 +29,9 @@ export default function ServitHomePage() {
       ════════════════════════════════════════════ */}
       <section className={styles.hero}>
         <div className={styles.heroBgWrap}>
-          {/* GIF — unoptimized para preservar la animación */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/hero.gif"
-            alt="Tecnología de seguridad SERVIT"
-            className={styles.heroBgImg}
-            fetchPriority="high"
-            decoding="async"
-          />
+          <div>
+            <Image src="/hero.gif" alt="Tecnología de seguridad SERVIT" fill className={styles.heroBgImg} priority />
+          </div>
         </div>
         <div className={styles.heroOverlay} />
 
