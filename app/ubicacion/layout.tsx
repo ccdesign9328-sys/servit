@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServitContactoLayout({
+export default function UbicacionLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export default function ServitContactoLayout({
         padding: 0,
       }}
     >
-      <ServitNavbar activePath="/servitcontacto" />
+      <ServitNavbar activePath="/ubicacion" />
       <main>{children}</main>
       <ServitFooter />
     </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
-export default function ServitContactoPage() {
+export default function UbicacionPage() {
   const [showModal, setShowModal] = useState(false);
   const [waUrl, setWaUrl] = useState("#");
 
