@@ -23,7 +23,7 @@ El botón "Mandar mensaje" en `/contacto` valida:
 - **Teléfono**: requerido, solo dígitos, exactamente 10 dígitos (México)
 - **Mensaje**: requerido, máximo 1000 caracteres
 
-Al pasar la validación abre un modal de confirmación. Al confirmar, abre WhatsApp al número **4422645163** con todos los datos del formulario.
+Al pasar la validación abre un modal de confirmación. Al confirmar, abre WhatsApp al número **524422733401** con todos los datos del formulario.
 
 ## Desarrollo
 

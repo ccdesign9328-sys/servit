@@ -46,7 +46,7 @@ export default function Navbar() {
               Contáctanos
             </Link>
             <a
-              href="https://wa.me/524422645163"
+              href="https://wa.me/52524422733401"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
@@ -111,7 +111,7 @@ export default function Navbar() {
               Contáctanos
             </Link>
             <a
-              href="https://wa.me/524422645163"
+              href="https://wa.me/52524422733401"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-600 text-white text-sm font-semibold px-5 py-2 rounded-full text-center"

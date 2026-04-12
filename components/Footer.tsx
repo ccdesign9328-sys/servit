@@ -62,7 +62,7 @@ export default function Footer() {
               nuestras opciones para ti.
             </p>
             <a
-              href="https://wa.me/524422645163"
+              href="https://wa.me/52524422733401"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
