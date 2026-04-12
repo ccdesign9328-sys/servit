@@ -149,7 +149,7 @@ export default function ServitFooter() {
               </p>
             </div>
             <a
-              href="https://wa.me/524422733401"
+              href="https://wa.me/524422733401?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaBtn}
