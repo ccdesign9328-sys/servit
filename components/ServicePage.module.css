@@ -404,6 +404,16 @@
   margin: 0 0 12px;
 }
 
+.contentRichText h2 {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  line-height: 140%;
+  color: #000;
+  margin: 0 0 12px;
+}
+
 /* p → preset-aeocj2: Figtree 400, 16px, 0em, 170% */
 .contentRichText p {
   font-family: "Figtree", system-ui, sans-serif;
@@ -441,6 +451,11 @@
 
 .contentRichText h3 + p,
 .contentRichText h3 + ul {
+  margin-top: 8px;
+}
+
+.contentRichText h2 + p,
+.contentRichText h2 + ul {
   margin-top: 8px;
 }
 
@@ -835,6 +850,11 @@
     letter-spacing: -0.6px;
   }
 
+    .contentRichText h3 {
+    font-size: 22px;
+    letter-spacing: -0.6px;
+  }
+
   /* relatedTitle tablet: preset-1i6aecd, escala proporcional */
   .relatedTitle {
     font-size: 44px;
@@ -981,6 +1001,11 @@
     letter-spacing: -0.5px;
   }
 
+  .contentRichText h2 {
+    font-size: 16px;
+    letter-spacing: -0.5px;
+  }
+
   .contentRichText p,
   .contentRichText li {
     font-size: 15px;
@@ -1088,4 +1113,3 @@
     text-align: center;
   }
 }
- 
