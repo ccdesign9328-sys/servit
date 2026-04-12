@@ -2077,12 +2077,13 @@
     letter-spacing: -0.5px;
   }
 
-   /* ── maintenanceSection mobile — framer-1upn7bu mobile: padding:60px 20px
+
+  /* ── maintenanceSection mobile — framer-1upn7bu mobile: padding:60px 20px
      framer-1tz26an mobile: flex-direction:column, gap:40px, max-width:100%
-     framer-1026ja9 mobile: height:399px, flex:none, order:1, width:100%
-     framer-biau4g mobile: flex:none, order:0, gap:35px, width:100%
-     framer-18cn9vu mobile: flex-direction:column, align-content:flex-start, gap:30px
-     card containers mobile: width:100%
+     framer-1026ja9 mobile: height:398px, flex:none, order:1, width:100%
+     framer-biau4g mobile: max-width:unset, flex:none, order:0, gap:35px, width:100%
+     framer-18cn9vu mobile: flex-direction:column, gap:30px
+     feature cards mobile: width:100%
   ── */
   .maintenanceSection {
     padding: 60px 20px;
@@ -2094,7 +2095,7 @@
     max-width: 100%;
   }
   .maintenanceImg {
-    height: var(--framer-aspect-ratio-supported, 399px);
+    height: var(--framer-aspect-ratio-supported, 398px);
     max-width: unset;
     flex: none;
     order: 1;
@@ -2114,51 +2115,92 @@
     align-items: flex-start;
     gap: 30px;
   }
-  .maintenanceFeatureItem,
-  .maintenanceFeatureItem:nth-child(1),
-  .maintenanceFeatureItem:nth-child(2),
-  .maintenanceFeatureItem:nth-child(3) {
+  .maintenanceFeatureItem {
     width: 100%;
-    height: auto;
   }
   .maintenanceH2 {
     font-size: 36px;
     letter-spacing: -1.5px;
   }
+}
 
-  /* Features */
-  .featuresGrid {
-    grid-template-columns: 1fr;
-  }
+/* ====================================================
+   WHATSAPP STICKY BUTTON
+   Equivalente a .framer-cjhrxs-container:
+   position:fixed, bottom:24px, right:24px
+   aspect-ratio:4.36364, height:44px, width:192px, z-index:1
+   El boton interno (.framer-D1pK7.framer-kywjz8):
+   flex-flow:row, gap:24px, padding:8px 8px 8px 24px
+   border-radius:50px, bg:rgb(12,204,70), backdrop-filter:blur(10px)
+   Igual en todos los breakpoints (no hay overrides de media query)
+   ==================================================== */
+.waButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 192px;
+  height: 44px;
+  aspect-ratio: 4.36364;
+  z-index: 1000;
+  text-decoration: none;
+  /* layout interno */
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 8px 8px 24px;
+  /* visual */
+  background-color: rgb(12, 204, 70);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-  .featuresHeader {
-    text-align: left;
-  }
+.waButton:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(12, 204, 70, 0.4);
+}
 
-  /* Brands */
-  .brandsRow {
-    gap: 24px;
-  }
-  .brandLogo {
-    height: 32px;
-    max-width: 80px;
-  }
+/* Texto "Cotiza ahora" */
+.waButtonText {
+  white-space: pre;
+  flex: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(0, 28, 8);
+  line-height: 1.2;
+}
 
-  /* CTA Banner */
-  .ctaBannerInner {
-    flex-direction: column;
-    gap: 28px;
-  }
+/* Circulo blanco con icono WA */
+.waButtonIcon {
+  aspect-ratio: 1;
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  display: flex;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  flex: none;
+  background-color: #fff;
+  border-radius: 9999px;
+  overflow: visible;
+  flex-shrink: 0;
+}
 
-  .ctaBannerActions {
-    flex-direction: column;
-    width: 100%;
-  }
-  .ctaBannerActions a {
-    width: 100%;
-    justify-content: center;
-  }
-  .btnWhite {
-    justify-content: space-between;
-  }
+.waButtonIcon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
 }
