@@ -4,15 +4,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
 export default function ServitContactoPage() {
-  /* ──── Estado del formulario ──── */
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [showModal, setShowModal] = useState(false);
   const [waUrl, setWaUrl] = useState("#");
 
@@ -56,53 +47,6 @@ export default function ServitContactoPage() {
     return () => observer.disconnect();
   }, []);
 
-  /* ──── Teléfono: solo dígitos ──── */
-  function handlePhoneChange(value: string) {
-    const digits = value.replace(/\D/g, "").slice(0, 10);
-    setForm((prev) => ({ ...prev, phone: digits }));
-  }
-
-  /* ──── Validación ──── */
-  function validate(): boolean {
-    const errs: Record<string, string> = {};
-
-    if (!form.name.trim()) errs.name = "El nombre es requerido.";
-    else if (form.name.trim().length > 50) errs.name = "Máximo 50 caracteres.";
-
-    if (!form.email.trim()) errs.email = "El correo es requerido.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
-      errs.email = "Correo inválido.";
-
-    const phone = form.phone.replace(/\D/g, "");
-    if (!phone) errs.phone = "El teléfono es requerido.";
-    else if (phone.length !== 10) errs.phone = "Debe tener 10 dígitos.";
-
-    if (!form.service) errs.service = "Selecciona un servicio.";
-
-    if (!form.message.trim()) errs.message = "El mensaje es requerido.";
-
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
-  }
-
-  /* ──── Construir URL de WhatsApp ──── */
-  function buildWhatsAppUrl(): string {
-    const text =
-      `Solicitud SERVIT\n\n` +
-      `Nombre: ${form.name.trim()}\n` +
-      `Correo: ${form.email.trim()}\n` +
-      `Teléfono: ${form.phone.trim()}\n` +
-      `Servicio: ${form.service}\n` +
-      `Mensaje:\n${form.message.trim()}`;
-    return `https://wa.me/524421435689?text=${encodeURIComponent(text)}`;
-  }
-
-  /* ──── Submit ──── */
-  function handleSubmit() {
-    if (!validate()) return;
-    setWaUrl(buildWhatsAppUrl());
-    setShowModal(true);
-  }
 
   /* ──── Cerrar modal ──── */
   const closeModal = useCallback(() => setShowModal(false), []);
@@ -116,15 +60,6 @@ export default function ServitContactoPage() {
     return () => document.removeEventListener("keydown", onKey);
   }, [showModal, closeModal]);
 
-  /* ──── Opciones de servicio ──── */
-  const services = [
-    "Cámaras de seguridad",
-    "Control de acceso",
-    "Alarmas de seguridad",
-    "Video portero inteligente",
-    "Aire acondicionado",
-    "Cerca eléctrica",
-  ];
 
   return (
     <>
@@ -142,145 +77,19 @@ export default function ServitContactoPage() {
         </div>
       </section>
 
-      {/* ======================== CONTACT SECTION ======================== */}
+      {/* ======================== MAP SECTION ======================== */}
       <section className={styles.contactSection}>
         <div className={styles.contactRow}>
           {/* FORM CARD */}
           <div ref={formCardRef} className={styles.formCard}>
-            {/* Nombre + Correo */}
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel} htmlFor="f-name">
-                  Nombre completo
-                </label>
-                <input
-                  className={`${styles.input}${errors.name ? ` ${styles.error}` : ""}`}
-                  id="f-name"
-                  type="text"
-                  placeholder="Nombre completo"
-                  maxLength={50}
-                  value={form.name}
-                  onChange={(e) =>
-                    setForm((p) => ({ ...p, name: e.target.value }))
-                  }
-                />
-                {errors.name && (
-                  <span className={`${styles.errMsg} ${styles.show}`}>
-                    {errors.name}
-                  </span>
-                )}
-              </div>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel} htmlFor="f-email">
-                  Correo
-                </label>
-                <input
-                  className={`${styles.input}${errors.email ? ` ${styles.error}` : ""}`}
-                  id="f-email"
-                  type="email"
-                  placeholder="Escribe tu correo"
-                  value={form.email}
-                  onChange={(e) =>
-                    setForm((p) => ({ ...p, email: e.target.value }))
-                  }
-                />
-                {errors.email && (
-                  <span className={`${styles.errMsg} ${styles.show}`}>
-                    {errors.email}
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Teléfono */}
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel} htmlFor="f-phone">
-                Número de contacto
-              </label>
-              <input
-                className={`${styles.input}${errors.phone ? ` ${styles.error}` : ""}`}
-                id="f-phone"
-                type="tel"
-                placeholder="(LADA)-000-0000"
-                maxLength={10}
-                inputMode="numeric"
-                value={form.phone}
-                onChange={(e) => handlePhoneChange(e.target.value)}
-              />
-              {errors.phone && (
-                <span className={`${styles.errMsg} ${styles.show}`}>
-                  {errors.phone}
-                </span>
-              )}
-            </div>
-
-            {/* Servicio */}
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel} htmlFor="f-service">
-                Tipo de servicio
-              </label>
-              <select
-                className={`${styles.select}${errors.service ? ` ${styles.error}` : ""}`}
-                id="f-service"
-                value={form.service}
-                onChange={(e) =>
-                  setForm((p) => ({ ...p, service: e.target.value }))
-                }
-              >
-                <option value="" disabled>
-                  Elige un servicio
-                </option>
-                {services.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-              {errors.service && (
-                <span className={`${styles.errMsg} ${styles.show}`}>
-                  {errors.service}
-                </span>
-              )}
-            </div>
-
-            {/* Mensaje */}
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel} htmlFor="f-msg">
-                Mensaje
-              </label>
-              <textarea
-                className={`${styles.textarea}${errors.message ? ` ${styles.error}` : ""}`}
-                id="f-msg"
-                placeholder="Describe el servicio que requieres, y con gusto te contactamos."
-                value={form.message}
-                onChange={(e) =>
-                  setForm((p) => ({ ...p, message: e.target.value }))
-                }
-              />
-              {errors.message && (
-                <span className={`${styles.errMsg} ${styles.show}`}>
-                  {errors.message}
-                </span>
-              )}
-            </div>
-
-            {/* Submit */}
-            <button
-              className={styles.submitBtn}
-              type="button"
-              onClick={handleSubmit}
-            >
-              MANDAR MENSAJE
-              <span className={styles.submitBtnIcon}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://framerusercontent.com/images/LyZMe15ecgs9VFeS17U7e7DyrDk.svg"
-                  alt="→"
-                  width={18}
-                  height={18}
-                />
-              </span>
-            </button>
+ <div className={styles.mapWrap}>
+            <iframe
+              src="https://maps.google.com/maps?q=Sistemas%20de%20Seguridad%20Servit&z=15&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación SERVIT"
+            />
+          </div>
           </div>
 
           {/* INFO PANEL */}
@@ -333,14 +142,7 @@ export default function ServitContactoPage() {
 
         {/* MAP */}
         <div className={styles.mapSection}>
-          <div className={styles.mapWrap}>
-            <iframe
-              src="https://maps.google.com/maps?q=Sistemas%20de%20Seguridad%20Servit&z=15&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Ubicación SERVIT"
-            />
-          </div>
+         
         </div>
       </section>
 
