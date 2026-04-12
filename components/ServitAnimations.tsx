@@ -11,13 +11,14 @@ import { useEffect } from "react";
 export default function ServitAnimations() {
   useEffect(() => {
     /* Incluye revealUp/Left/Right + elementos con animación propia:
-       serviceCard, trustImgWrap, trustCard, aboutLeft, aboutCard,
+       serviceCard, relatedCard, trustImgWrap, trustCard, aboutLeft, aboutCard,
        maintenanceBiau, maintenanceImg */
     const selector = [
       "[class*='revealUp']",
       "[class*='revealLeft']",
       "[class*='revealRight']",
       "[class*='serviceCard']",
+      "[class*='relatedCard']",
       "[class*='trustImgWrap']",
       "[class*='trustCard']",
       "[class*='aboutLeft']",

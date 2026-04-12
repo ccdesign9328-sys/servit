@@ -65,7 +65,7 @@ export default function ServiciosPage() {
         </div>
 
         {/* framer-144w096 — animación revealUp */}
-        <div className={`${styles.heroContainer} ${styles.revealUp}`}>
+        <div className={styles.heroContainer}>
 
           {/* framer-1o3hoqg — Sectionn Title */}
           <div className={styles.heroTitleGroup}>
@@ -87,7 +87,7 @@ export default function ServiciosPage() {
       <section className={styles.serviceSection}>
 
         {/* framer-1tj52w8 — border-bottom 1px rgba(0,0,0,0.1) */}
-        <div className={`${styles.cardContainer} ${styles.revealUp}`}>
+        <div className={styles.cardContainer}>
 
           {/* framer-13k26p — Card Wrapper */}
           <div className={styles.cardWrapper}>
@@ -103,7 +103,7 @@ export default function ServiciosPage() {
                   <Link
                     key={service.slug}
                     href={`/servicios/${service.slug}`}
-                    className={`${styles.serviceCard} ${styles.revealUp}`}
+                    className={styles.serviceCard}
                     style={{ transitionDelay: `${i * 0.07}s` }}
                   >
                     {/* framer-17jkgpc — imagen de la card */}

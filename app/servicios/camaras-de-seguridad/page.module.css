@@ -1,0 +1,1013 @@
+/*
+ * /servicios/camaras-de-seguridad — CSS Module
+ * Migración nativa desde Framer (service/camaras-de-seguridad.html · framer-Ozx6b)
+ * Breakpoints: Desktop ≥1200px · Tablet 768–1199.98px · Mobile ≤767.98px
+ */
+
+/* ====================================================
+   ANIMACIONES — IntersectionObserver agrega .visible (global)
+   ==================================================== */
+.revealUp {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+:global(.visible).revealUp {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards de servicios relacionados */
+.relatedCard {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.25s ease;
+  will-change: transform, opacity;
+}
+
+:global(.visible).relatedCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.relatedCard:hover {
+  border-color: rgb(235, 26, 33) !important;
+}
+
+/* Hero title/desc animan con keyframe al cargar (siempre en viewport) */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.heroTitle {
+  animation: heroFadeIn 0.7s ease both;
+  animation-delay: 0.1s;
+}
+
+.heroDesc {
+  animation: heroFadeIn 0.7s ease both;
+  animation-delay: 0.25s;
+}
+
+/* ====================================================
+   PAGE WRAPPER
+   ==================================================== */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+/* ====================================================
+   HERO SECTION — framer-lq25df
+   bg: #000 (negro sólido, sin imagen de fondo)
+   Desktop: padding 172px 30px 64px
+   Tablet:  padding 140px 30px 80px
+   Mobile:  padding 100px 20px 60px
+   ==================================================== */
+.hero {
+  background-color: #000;
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: min-content;
+  padding: 172px 30px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero inner container — framer-uiupjd */
+.heroContainer {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Title & Button group — framer-do1fey */
+.heroTitleGroup {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Title & Paragraph — framer-siftzt */
+.heroTextGroup {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title row — framer-oow6wd (desktop: row, left-align) */
+.heroTitleRow {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* H1 rich text container — framer-1gpif8z */
+.heroTitleWrap {
+  white-space: pre;
+  flex: none;
+  width: auto;
+  height: auto;
+  position: relative;
+}
+
+/* H1 — framer-styles-preset-695xs4, Figtree 700 */
+.heroTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 110%;
+  color: #fff;
+  margin: 0;
+  text-align: left;
+}
+
+/* Paragraph desc — framer-zif8b (opacity 0.8, max-width 520px) */
+.heroDesc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #f6f7f9;
+  opacity: 0.8;
+  margin: 0;
+  max-width: 520px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+  text-align: center;
+}
+
+/* CTA buttons row */
+.heroBtns {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 16px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* "Regresar" — white border pill button */
+.btnOutline {
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  transition: opacity 0.2s ease;
+}
+
+.btnOutline:hover {
+  opacity: 0.85;
+}
+
+/* "Cotizar ahora" — red pill button */
+.btnPrimary {
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(235, 26, 33);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnArrowCircle {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border-radius: 9999px;
+  flex: none;
+}
+
+/* ====================================================
+   CONTENT SECTION — framer-elqjzc
+   bg: #fff, black top-bar decoration
+   Desktop: gap 60px, padding 0 30px 120px
+   Tablet:  gap 40px, padding 0 30px 80px
+   Mobile:  gap 30px, padding 0 20px 60px
+   ==================================================== */
+.contentSection {
+  background-color: #fff;
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  height: min-content;
+  padding: 0 30px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Black top bar — framer-16w41a3
+   Desktop: aspect-ratio 8, height ~150px
+   Tablet:  height ~96px
+   Mobile:  height ~49px, order 0
+*/
+.contentTopBar {
+  aspect-ratio: 8;
+  background-color: #000;
+  height: 150px;
+  z-index: 0;
+  flex: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* Content inner container — framer-65xmzm */
+.contentInner {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Content body — framer-lpb0ca, max-width 930px */
+.contentBody {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+  max-width: 930px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Main image — framer-3ptml
+   Desktop: aspect-ratio 1.50974, height ~616px, border-radius 16px
+   Tablet:  height ~469px
+   Mobile:  height ~232px
+*/
+.contentImage {
+  aspect-ratio: 1.50974;
+  height: 616px;
+  border-radius: 16px;
+  flex: none;
+  width: 100%;
+  max-width: 930px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+/* Rich text body — framer-19mmovt */
+.contentRichText {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+/* Typography inside rich text */
+.contentRichText h3 {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 130%;
+  color: #000;
+  margin: 0 0 12px;
+}
+
+.contentRichText p {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #3b3b3b;
+  margin: 0 0 12px;
+}
+
+.contentRichText ul {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.contentRichText li {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #3b3b3b;
+  margin-bottom: 6px;
+}
+
+.contentRichText h3 + p,
+.contentRichText h3 + ul {
+  margin-top: 8px;
+}
+
+/* Content section buttons — below rich text */
+.contentBtns {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* ====================================================
+   SERVICE SECTION (related services) — framer-clj9mh / framer-1cbe5fj
+   bg: #f6f7f9
+   Desktop: padding 120px 30px 0
+   Tablet:  padding 80px 30px 0
+   Mobile:  padding 60px 20px 0
+   ==================================================== */
+.relatedSection {
+  background-color: #f6f7f9;
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  height: min-content;
+  padding: 120px 30px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Related container — framer-1cbe5fj */
+.relatedContainer {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0 0 120px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Card Wrapper — framer-1ymtea */
+.relatedWrapper {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Content row (title + button) — framer-1mbthgv */
+.relatedHeader {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 94px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title row — framer-18enfsl (row, space-between on desktop) */
+.relatedTitleRow {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title text — framer-13964e8 */
+.relatedTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 120%;
+  color: #000;
+  margin: 0;
+  flex: 1 0 0;
+  width: 1px;
+}
+
+/* "Ver todos los servicios" button */
+.relatedAllBtn {
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 24px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  flex: none;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+
+.relatedAllBtn:hover {
+  opacity: 0.85;
+}
+
+/* Service grid — framer-944f9s (2 col desktop, col tablet/mobile) */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  grid-auto-rows: min-content;
+  justify-content: center;
+  gap: 24px;
+  flex: none;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+}
+
+/* Related card — same pattern as main service cards */
+.relatedCard {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  height: 360px;
+  padding: 20px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.relatedCardImage {
+  flex: 1 0 0;
+  width: 1px;
+  height: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.relatedCardImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.relatedCardContent {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 23px;
+  width: 1px;
+  height: min-content;
+  padding: 40px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.relatedCardBody {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+}
+
+.relatedCardTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 140%;
+  color: #000;
+  margin: 0;
+  text-align: left;
+}
+
+.relatedCardDesc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #3b3b3b;
+  opacity: 0.8;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.relatedCardBtn {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: min-content;
+  height: min-content;
+  padding: 6px 8px 6px 16px;
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 52px;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.relatedCardBtnLabel {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #3b3b3b;
+  white-space: pre;
+}
+
+.relatedCardBtnIcon {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: rgb(235, 26, 33);
+  border-radius: 45px;
+}
+
+.relatedCardBtnArrow {
+  width: 12px;
+  height: 12px;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====================================================
+   WA STICKY BUTTON
+   ==================================================== */
+.waButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 192px;
+  height: 44px;
+  z-index: 1000;
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 8px 8px 24px;
+  background-color: rgb(12, 204, 70);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.waButtonText {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(0, 28, 8);
+  white-space: nowrap;
+  z-index: 2;
+  flex: none;
+}
+
+.waButtonIcon {
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 9999px;
+  flex: none;
+}
+
+.waButtonIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ====================================================
+   RESPONSIVE — TABLET  768px–1199.98px
+   ==================================================== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  /* Hero */
+  .hero {
+    padding: 140px 30px 80px;
+  }
+
+  .heroContainer {
+    max-width: 100%;
+  }
+
+  .heroTitle {
+    font-size: 44px;
+    text-align: center;
+  }
+
+  .heroDesc {
+    max-width: unset;
+  }
+
+  /* Content section */
+  .contentSection {
+    gap: 40px;
+    padding: 0 30px 80px;
+  }
+
+  .contentTopBar {
+    height: 96px;
+  }
+
+  .contentInner {
+    gap: 40px;
+    max-width: 100%;
+  }
+
+  .contentBody {
+    gap: 50px;
+  }
+
+  .contentImage {
+    height: 469px;
+  }
+
+  /* Related section */
+  .relatedSection {
+    padding: 80px 30px 0;
+  }
+
+  .relatedContainer {
+    gap: 60px;
+    max-width: 100%;
+    padding: 0 0 60px;
+  }
+
+  .relatedWrapper {
+    gap: 50px;
+  }
+
+  .relatedHeader {
+    gap: 35px;
+    max-width: 100%;
+  }
+
+  /* Grid → column */
+  .relatedGrid {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .relatedCard {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 644px;
+    height: min-content;
+    overflow: hidden;
+  }
+
+  .relatedCardImage {
+    align-self: unset;
+    flex: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.18182;
+    border-radius: 0;
+  }
+
+  .relatedCardContent {
+    flex: none;
+    align-items: flex-start;
+    gap: 22px;
+    width: 100%;
+    padding: 24px 24px 20px;
+  }
+
+  .relatedCardTitle {
+    font-size: 22px;
+  }
+}
+
+/* ====================================================
+   RESPONSIVE — MOBILE  ≤767.98px
+   ==================================================== */
+@media (max-width: 767.98px) {
+  /* Hero */
+  .hero {
+    padding: 100px 20px 60px;
+  }
+
+  .heroContainer {
+    max-width: 100%;
+  }
+
+  /* Title row → column centered on mobile */
+  .heroTitleRow {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .heroTitleWrap {
+    white-space: pre-wrap;
+    word-break: break-word;
+    word-wrap: break-word;
+    width: 100%;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .heroDesc {
+    max-width: unset;
+    text-align: center;
+  }
+
+  /* Content section */
+  .contentSection {
+    gap: 30px;
+    padding: 0 20px 60px;
+  }
+
+  .contentTopBar {
+    height: 49px;
+    order: 0;
+  }
+
+  .contentInner {
+    order: 1;
+    gap: 30px;
+    max-width: 100%;
+  }
+
+  .contentBody {
+    gap: 35px;
+  }
+
+  .contentImage {
+    height: 232px;
+  }
+
+  .contentRichText h3 {
+    font-size: 22px;
+  }
+
+  .contentRichText p,
+  .contentRichText li {
+    font-size: 15px;
+  }
+
+  .contentBtns {
+    justify-content: center;
+  }
+
+  /* Related section */
+  .relatedSection {
+    padding: 60px 20px 0;
+  }
+
+  .relatedContainer {
+    gap: 30px;
+    max-width: 100%;
+    padding: 0 0 40px;
+  }
+
+  .relatedWrapper {
+    gap: 24px;
+  }
+
+  .relatedHeader {
+    gap: 30px;
+  }
+
+  /* Title row → column centered */
+  .relatedTitleRow {
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 0 40px 60px;
+  }
+
+  .relatedTitle {
+    flex: none;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    order: 0;
+  }
+
+  .relatedAllBtn {
+    order: 1;
+    align-self: center;
+    transform: translateX(0);
+  }
+
+  /* Grid → column */
+  .relatedGrid {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .relatedCard {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 100%;
+    height: min-content;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .relatedCardImage {
+    align-self: unset;
+    aspect-ratio: 1.18182;
+    height: auto;
+    flex: none;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .relatedCardContent {
+    flex: none;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .relatedCardTitle {
+    font-size: 20px;
+  }
+
+  .relatedCardDesc {
+    font-size: 15px;
+  }
+}
