@@ -127,7 +127,7 @@ export default function AireAcondicionado() {
   return (
     <ServicePage
       title="Aire acondicionado"
-      titleDescription="Confort térmico para tu hogar o negocio todo el año. El reto: mantener la temperatura ideal de forma eficiente y económica. Instalamos y mantenemos sistemas de climatización de alta eficiencia adaptados a cada espacio y necesidad."
+      titleDescription="Climatiza tu espacio con eficiencia, tecnología y respaldo profesional. Las altas temperaturas, los espacios cerrados y la mala ventilación afectan la productividad, el descanso y el bienestar."
       mainImg="/products/aire-acondicionado.png"
       contentRichText={richText}
       relatedServices={RELATED_SERVICES}

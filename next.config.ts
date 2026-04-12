@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/servithome",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
