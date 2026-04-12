@@ -1,0 +1,750 @@
+/*
+ * /servicios — CSS Module
+ * Migración nativa desde Framer (service.html / framer-UpYsh)
+ * Breakpoints: Desktop ≥1200px · Tablet 768–1199.98px · Mobile ≤767.98px
+ */
+
+/* ====================================================
+   ANIMACIONES DE ENTRADA (IntersectionObserver)
+   ==================================================== */
+.revealUp {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+.revealUp.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay1 { transition-delay: 0.1s; }
+.delay2 { transition-delay: 0.2s; }
+.delay3 { transition-delay: 0.3s; }
+.delay4 { transition-delay: 0.4s; }
+.delay5 { transition-delay: 0.5s; }
+
+/* ====================================================
+   PAGE WRAPPER
+   ==================================================== */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+/* ====================================================
+   HERO SECTION — framer-1j8t9bk
+   Desktop: padding 175px 30px 120px
+   Tablet:  padding 140px 30px 80px
+   Mobile:  padding 100px 20px 60px
+   ==================================================== */
+.hero {
+  will-change: filter;
+  display: flex;
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: min-content;
+  padding: 175px 30px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo — imagen con object-fit cover */
+.heroBgWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.heroBgImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hero container — framer-144w096 (animado: opacity 0 → 1 via revealUp) */
+.heroContainer {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section title group — framer-1o3hoqg */
+.heroTitleGroup {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* H1 — framer-styles-preset-695xs4 (Figtree 700, ~56px desktop) */
+.heroTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -1px;
+  line-height: 110%;
+  color: #fff;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+  height: auto;
+}
+
+/* P desc — framer-jzomcg (opacity 0.8, max-width 470px desktop) */
+.heroDesc {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #fff;
+  opacity: 0.8;
+  margin: 0;
+  max-width: 470px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+  height: auto;
+}
+
+/* ====================================================
+   SERVICE SECTION — framer-1i6cb7q
+   Desktop: padding 120px 30px 0, bg #f6f7f9
+   Tablet:  padding 80px 30px 0
+   Mobile:  padding 60px 20px 0
+   ==================================================== */
+.serviceSection {
+  background-color: #f6f7f9;
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  height: min-content;
+  padding: 120px 30px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card container — framer-1tj52w8
+   border-bottom: 1px solid rgba(0,0,0,0.1)
+   Desktop: gap 64px, max-width 1312px, padding-bottom 120px
+   Tablet:  gap 60px, max-width 100%, padding-bottom 60px
+   Mobile:  gap 30px, max-width 100%, padding-bottom 40px
+*/
+.cardContainer {
+  --border-bottom-width: 1px;
+  --border-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1312px;
+  height: min-content;
+  padding: 0 0 120px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Card wrapper — framer-13k26p
+   Desktop: gap 24px
+   Tablet:  gap 30px
+   Mobile:  gap 30px
+*/
+.cardWrapper {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Service grid — framer-ebd6wv
+   Desktop: grid 2 columns, gap 24px
+   Tablet:  flex column
+   Mobile:  flex column, gap 16px
+*/
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  grid-auto-rows: min-content;
+  justify-content: center;
+  gap: 24px;
+  flex: none;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+}
+
+/* Service card — framer-2vs96y (card link <a>)
+   Desktop: flex row, gap 32px, width 644px, height 360px, padding 20px
+   Tablet:  flex column, gap 28px, width 350px (centered)  [framer-v-o07k0y]
+   Mobile:  flex column, gap 28px, width 350px             [framer-v-mkc10v]
+*/
+.serviceCard {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  height: 360px;
+  padding: 20px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.serviceCard:hover {
+  border-color: rgb(235, 26, 33);
+}
+
+/* Card image — framer-17jkgpc
+   Desktop: flex 1 0 0, width 1px (flex grow), height 100%
+   Tablet/Mobile: aspect-ratio 1.18182, width 100%, flex none
+*/
+.cardImage {
+  flex: 1 0 0;
+  width: 1px;
+  height: 100%;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cardImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+/* Content & Button — framer-1jimn4a
+   Desktop: flex column, gap 23px, flex 1 0 0, width 1px, padding 40px 0
+   Mobile:  flex none, width 100%, gap 22px, align center, padding 0 0 20px
+*/
+.cardContentWrap {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 0;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 23px;
+  width: 1px;
+  height: min-content;
+  padding: 40px 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Content — framer-19hjo1w
+   Desktop: flex column, gap 64px
+   Mobile:  gap 16px, align center
+*/
+.cardContent {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 64px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title rich text — framer-1aeiy7g */
+.cardTitleText {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+/* Card title — h4 framer-styles-preset-3ubip
+   Figtree 600, 24px, -0.5px tracking
+*/
+.cardTitle {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 140%;
+  color: #000;
+  margin: 0;
+  text-align: left;
+}
+
+/* Button number group — framer-6o2ggy
+   Desktop: max-width 228px, align flex-start
+   Mobile:  max-width unset, align center
+*/
+.cardButtonGroup {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 1px;
+  width: 100%;
+  max-width: 228px;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Number row — framer-xl0908 */
+.cardButtonNumber {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 3px;
+  width: min-content;
+  min-width: 26px;
+  height: min-content;
+  min-height: 21px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button text container — framer-19k0ozf */
+.cardButtonTextWrap {
+  display: flex;
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Description — framer-v98dxq */
+.cardDesc {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #3b3b3b;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Button — framer-bg7jd9
+   Pill button with border rgba(0,0,0,0.4), icon circle red
+*/
+.cardBtn {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 24px;
+  width: min-content;
+  height: min-content;
+  padding: 6px 8px 6px 16px;
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 52px;
+  background: transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Button label — "Ver más" framer-nb5g8o */
+.cardBtnLabel {
+  white-space: pre;
+  flex: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #3b3b3b;
+}
+
+/* Button icon circle — framer-jt0lh9 */
+.cardBtnIcon {
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 10px;
+  width: min-content;
+  height: min-content;
+  padding: 8px;
+  position: relative;
+  overflow: visible;
+  background-color: rgb(235, 26, 33);
+  border-radius: 45px;
+}
+
+/* Arrow SVG inside icon — framer-13m42uf-container, rotated -45deg */
+.cardBtnArrow {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  transform: rotate(-45deg);
+}
+
+/* ====================================================
+   WA STICKY BUTTON — framer-11q5eok-container
+   Same all breakpoints: fixed bottom-right
+   ==================================================== */
+.waButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 192px;
+  height: 44px;
+  aspect-ratio: 4.36364;
+  z-index: 1000;
+  display: flex;
+  flex-flow: row;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 8px 8px 24px;
+  background-color: rgb(12, 204, 70);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.waButtonText {
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 170%;
+  color: rgb(0, 28, 8);
+  white-space: nowrap;
+  z-index: 2;
+  flex: none;
+  width: auto;
+  height: auto;
+}
+
+.waButtonIcon {
+  aspect-ratio: 1;
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  display: flex;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 9999px;
+  position: relative;
+  overflow: visible;
+}
+
+.waButtonIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ====================================================
+   RESPONSIVE — TABLET  768px–1199.98px
+   ==================================================== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  /* Hero */
+  .hero {
+    padding: 140px 30px 80px;
+  }
+
+  .heroContainer {
+    max-width: 100%;
+  }
+
+  .heroTitleGroup {
+    align-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .heroTitle {
+    font-size: 44px;
+    text-align: center;
+  }
+
+  .heroDesc {
+    max-width: unset;
+    text-align: center;
+  }
+
+  /* Service section */
+  .serviceSection {
+    padding: 80px 30px 0;
+  }
+
+  .cardContainer {
+    gap: 60px;
+    max-width: 100%;
+    padding: 0 0 60px;
+  }
+
+  .cardWrapper {
+    gap: 30px;
+  }
+
+  /* Grid → column for tablet */
+  .serviceGrid {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+  }
+
+  /* Card: tablet variant (framer-v-o07k0y): column layout, height min-content */
+  .serviceCard {
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    max-width: 644px;
+    height: min-content;
+  }
+
+  /* Card image: stretch, height auto */
+  .cardImage {
+    align-self: stretch;
+    flex: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.18182;
+  }
+
+  .cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Content wrap */
+  .cardContentWrap {
+    flex: none;
+    align-content: center;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+    padding: 0 0 20px;
+  }
+
+  .cardContent {
+    align-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cardTitle {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .cardButtonGroup {
+    max-width: unset;
+    align-content: center;
+    align-items: center;
+  }
+
+  .cardButtonNumber {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .cardButtonTextWrap {
+    align-content: center;
+    align-items: center;
+  }
+
+  .cardDesc {
+    text-align: center;
+  }
+}
+
+/* ====================================================
+   RESPONSIVE — MOBILE  ≤767.98px
+   ==================================================== */
+@media (max-width: 767.98px) {
+  /* Hero */
+  .hero {
+    padding: 100px 20px 60px;
+  }
+
+  .heroContainer {
+    max-width: 100%;
+  }
+
+  .heroTitleGroup {
+    align-content: center;
+    align-items: center;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .heroDesc {
+    max-width: unset;
+    text-align: center;
+  }
+
+  /* Service section */
+  .serviceSection {
+    padding: 60px 20px 0;
+  }
+
+  .cardContainer {
+    gap: 30px;
+    max-width: 100%;
+    padding: 0 0 40px;
+  }
+
+  .cardWrapper {
+    gap: 30px;
+  }
+
+  /* Grid → column for mobile */
+  .serviceGrid {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Card: mobile variant (framer-v-mkc10v): column, full width */
+  .serviceCard {
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    max-width: 350px;
+    height: min-content;
+  }
+
+  /* Card image: aspect-ratio, full width */
+  .cardImage {
+    align-self: unset;
+    aspect-ratio: 1.18182;
+    height: 263px;
+    flex: none;
+    width: 100%;
+  }
+
+  /* Content wrap */
+  .cardContentWrap {
+    flex: none;
+    align-content: center;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+    padding: 0 0 20px;
+  }
+
+  .cardContent {
+    align-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cardTitle {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .cardButtonGroup {
+    max-width: unset;
+    align-content: center;
+    align-items: center;
+  }
+
+  .cardButtonNumber {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .cardButtonTextWrap {
+    align-content: center;
+    align-items: center;
+  }
+
+  .cardDesc {
+    text-align: center;
+  }
+}
