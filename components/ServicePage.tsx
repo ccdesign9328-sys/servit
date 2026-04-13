@@ -30,7 +30,7 @@ export interface ServicePageProps {
   relatedServices: RelatedService[];
 }
 
-const WA_NUMBER = "524422733401";
+const WA_NUMBER = "524422645163";
 
 export default function ServicePage({
   title,

@@ -592,7 +592,7 @@ export default function ServitHomePage() {
         </div>
       </section>
       <a
-        href="https://wa.me/524422733401?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+        href="https://wa.me/524422645163?text=Hola%20quiero%20m%C3%A1s%20informaci%C3%B3n"
         rel="noopener noreferrer"
         target="_blank"
         className={styles.waButton}
