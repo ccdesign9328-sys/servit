@@ -1,32 +1,36 @@
 /* ====================================================
-   SERVIT FOOTER
+   SERVIT FOOTER — matches framer-lrnkB / framer-3ghjw3
    ==================================================== */
 
-/* Outer wrapper — gray-bg page background */
+/* Outer wrapper — framer-3ghjw3
+   Full width, gray-bg, insets the black card */
 .footerWrap {
   background: #f6f7f9;
-  padding: 40px;
+  width: 100%;
+  padding: 16px 16px 26px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  align-items: stretch;
+  gap: 0;
+  box-sizing: border-box;
 }
 
-/* Black rounded card */
+/* Black rounded card — framer-ssfet8 (bg) + framer-jjq15q (content) */
 .footer {
   width: 100%;
-  max-width: 1312px;
   background: #000;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   gap: 88px;
-  padding: 64px 60px;
+  padding: 120px 60px 86px;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* Two-column content row */
+/* Two-column content row — framer-1lr3jhj
+   flex row, gap:148px, border-bottom */
 .content {
   display: flex;
   flex-flow: row;
@@ -46,116 +50,134 @@
   transform: translateY(0);
 }
 
-/* Vertical divider at 50% */
-.divider {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Left column */
+/* LEFT column — framer-1p5kyi9
+   flex:1, max-width:784px, gap:32px */
 .left {
   flex: 1 0 0;
   width: 1px;
   max-width: 784px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 32px;
 }
 
 .logoLink {
-  display: inline-block;
+  display: block;
   text-decoration: none;
-}
-
-.logoItem {
+  width: 132px;
+  height: 70px;
   position: relative;
-  width: 80px;
-  height: 44px;
+  flex-shrink: 0;
 }
 
+/* Title + tagline group — framer-eisl2i
+   gap:8px, max-width:356px */
 .leftBody {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 48px;
+  width: 100%;
 }
 
 .headline {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   max-width: 356px;
 }
 
+/* preset-1em47b: 28px / 600 / 140% / -0.5px */
 .title {
-  font-size: clamp(18px, 2vw, 22px);
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
   color: #fff;
-  line-height: 1.25;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
   margin: 0;
 }
 
+/* preset-aeocj2: 16px / 400 / 170% */
 .tagline {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: rgba(246, 247, 249, 0.7);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
 }
 
-/* Brand logos grid */
+/* Brand logos — framer-s822m8 inner logos */
 .brands {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
+/* framer-18zhgig / framer-ws0m1b: flex row, gap:28px */
 .brandRow {
   display: flex;
   flex-flow: row;
   align-items: center;
+  justify-content: flex-start;
   gap: 28px;
   flex-wrap: wrap;
 }
 
-/* Right column */
+/* RIGHT column — framer-nvu9i6
+   flex:1, max-width:480px, gap:48px, padding-right:50px */
 .right {
   flex: 1 0 0;
   width: 1px;
   max-width: 480px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 48px;
   padding-right: 50px;
 }
 
+/* framer-2b12z: title + desc, gap:8px */
+.ctaBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+/* same preset-1em47b */
 .ctaTitle {
-  font-size: clamp(18px, 2vw, 22px);
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
   color: #fff;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
   margin: 0;
 }
 
+/* same preset-aeocj2 */
 .ctaDesc {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: rgba(246, 247, 249, 0.7);
-  line-height: 1.6;
-  margin-top: 8px;
+  line-height: 1.7;
+  margin: 0;
 }
 
-/* White pill button */
+/* White pill button — framer-kywjz8 */
 .ctaBtn {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   background: #fff;
   color: #000;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 10px 10px 10px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
+  padding: 8px 8px 8px 24px;
   border-radius: 50px;
   white-space: nowrap;
   align-self: flex-start;
@@ -168,10 +190,11 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
+/* Arrow circle — framer-1j71888: 28px, red bg, rotate -45deg */
 .ctaBtnIcon {
-  width: 40px;
-  height: 40px;
-  background: #eb1a21;
+  width: 28px;
+  height: 28px;
+  background: #ff6333;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -180,10 +203,17 @@
   transform: rotate(-45deg);
 }
 
-/* Copyright */
+/* Copyright row — framer-11xkhsu */
 .copyright {
-  font-size: 13px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
   margin: 0;
   opacity: 0;
   transform: translateY(18px);
@@ -196,73 +226,165 @@
 }
 
 /* ====================================================
-   RESPONSIVE
+   TABLET  768–1199px — framer-lrnkB.framer-v-xemiw4
    ==================================================== */
 @media (min-width: 768px) and (max-width: 1199.98px) {
   .footerWrap {
-    padding: 40px;
+    padding: 16px 16px 26px;
   }
 
   .footer {
-    gap: 56px;
-    padding: 48px 40px;
+    padding: 80px 40px 60px;
+    gap: 60px;
     border-radius: 16px;
   }
 
   .content {
     flex-direction: column;
-    gap: 48px;
+    align-items: center;
+    gap: 40px;
     padding-bottom: 40px;
   }
 
-  .divider {
-    display: none;
+  .left {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+    align-items: center;
   }
 
-  .left,
+  .leftBody {
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .headline {
+    max-width: 70%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .brandRow {
+    justify-content: center;
+    max-width: 100%;
+  }
+
   .right {
     max-width: 100%;
     width: 100%;
     flex: none;
+    padding-right: 0;
+    align-items: center;
+    gap: 32px;
   }
 
-  .right {
-    padding-right: 0;
+  .ctaBlock {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ctaDesc {
+    max-width: 80%;
+    text-align: center;
+  }
+
+  .ctaBtn {
+    align-self: center;
+  }
+
+  .copyright {
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    text-align: center;
   }
 }
 
+/* ====================================================
+   MOBILE  <768px — framer-lrnkB.framer-v-tfx291
+   ==================================================== */
 @media (max-width: 767.98px) {
   .footerWrap {
-    padding: 40px 20px;
+    padding: 16px 16px 26px;
   }
 
   .footer {
-    gap: 40px;
-    padding: 36px 24px;
+    padding: 60px 20px 44px;
+    gap: 30px;
     border-radius: 16px;
   }
 
   .content {
     flex-direction: column;
-    gap: 48px;
-    padding-bottom: 0;
-    border-bottom: none;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 30px;
   }
 
-  .divider {
-    display: none;
+  .left {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+    align-items: center;
+    gap: 40px;
   }
 
-  .left,
+  .leftBody {
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .headline {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  /* 2×2 grid for brand logos on mobile */
+  .brands {
+    gap: 24px;
+    width: 100%;
+  }
+
+  .brandRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 24px;
+  }
+
   .right {
     max-width: 100%;
     width: 100%;
     flex: none;
+    padding-right: 0;
+    padding-bottom: 30px;
+    align-items: center;
+    gap: 30px;
   }
 
-  .right {
-    padding-right: 0;
-    padding-top: 40px;
-    border-top: 1px solid rgba(246, 247, 249, 0.2);
+  .ctaBlock {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+
+  .ctaDesc {
+    text-align: center;
+  }
+
+  .ctaBtn {
+    align-self: center;
+  }
+
+  .copyright {
+    flex-direction: column;
+    justify-content: center;
+    gap: 36px;
+    text-align: center;
   }
 }
