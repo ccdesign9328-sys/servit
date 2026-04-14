@@ -82,7 +82,7 @@ export default function ServitNavbar({ activePath = "" }: ServitNavbarProps) {
             </li>
           ))}
           <li>
-            <Link href="https://api.whatsapp.com/send/?phone=524422645163&text=Hola+quiero+m%C3%A1s+informaci%C3%B3n&type=phone_number&app_absent=0" className={styles.ctaBtn}>
+            <Link href="https://api.whatsapp.com/send/?phone=524422269192&text=Hola+quiero+m%C3%A1s+informaci%C3%B3n&type=phone_number&app_absent=0" className={styles.ctaBtn}>
               Contáctanos
             </Link>
           </li>
@@ -120,7 +120,7 @@ export default function ServitNavbar({ activePath = "" }: ServitNavbarProps) {
             </Link>
           ))}
           <Link
-            href="https://api.whatsapp.com/send/?phone=524422645163&text=Hola+quiero+m%C3%A1s+informaci%C3%B3n&type=phone_number&app_absent=0"
+            href="https://api.whatsapp.com/send/?phone=524422269192&text=Hola+quiero+m%C3%A1s+informaci%C3%B3n&type=phone_number&app_absent=0"
             onClick={() => setMenuOpen(false)}
             className={styles.mobileCta}
           >
