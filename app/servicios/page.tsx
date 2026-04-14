@@ -20,22 +20,6 @@ const SERVICE_ORDER = [
   "aire-acondicionado",
 ];
 
-/* Imágenes originales del Framer (service.html) por slug
-   Corresponden a las tarjetas del desktop en framer-ebd6wv */
-const SERVICE_IMAGES: Record<string, string> = {
-  "camaras-de-seguridad":
-    "/products/camaras-de-seguridad.png",
-  "video-portero-inteligente":
-    "/products/video-portero-inteligente.png",
-  "control-acceso":
-    "/products/control-acceso.png",
-  alarmas:
-    "/products/alarmas.png",
-  "cerca-electrica":
-    "/products/cerca-electrica.png",
-  "aire-acondicionado":
-    "/products/aire-acondicionado.png",
-};
 
 export default function ServiciosPage() {
   const orderedServices = SERVICE_ORDER.map((slug) =>
@@ -54,7 +38,7 @@ export default function ServiciosPage() {
         {/* Fondo */}
         <div className={styles.heroBgWrap}>
           <Image
-            src="https://framerusercontent.com/images/RhpKA821vWVNI6Sgp1enL5sO0.png"
+            src="/nsipmg.jpg"
             alt="Nuestros servicios"
             fill
             className={styles.heroBgImg}
@@ -94,9 +78,6 @@ export default function ServiciosPage() {
             {/* framer-ebd6wv — grid 2 columnas desktop */}
             <div className={styles.serviceGrid}>
               {orderedServices.map((service, i) => {
-                const imgSrc =
-                  SERVICE_IMAGES[service.slug] || service.image;
-
                 return (
                   /* framer-2vs96y / framer-MIfd4 — card link */
                   <Link
@@ -108,7 +89,7 @@ export default function ServiciosPage() {
                     {/* framer-17jkgpc — imagen de la card */}
                     <div className={styles.cardImage}>
                       <Image
-                        src={imgSrc}
+                        src={service.image}
                         alt={service.title}
                         fill
                         className={styles.cardImg}

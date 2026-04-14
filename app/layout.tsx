@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Soluciones integrales de seguridad, automatización y climatización en Querétaro. Instalación profesional y soporte continuo.",
     images: [
       {
-        url: "https://framerusercontent.com/images/7Tb7901jrNH2Hy8lH8g8b4zTiCY.svg",
+        url: "/SLB.svg",
         width: 400,
         height: 400,
         alt: "SERVIT Logo",
